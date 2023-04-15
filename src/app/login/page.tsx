@@ -1,13 +1,13 @@
+import Link from "next/link";
 import Image from "next/image";
 
+import LoginForm from "@components/Login/LoginForm/Form";
 import introImage from "@assets/images/login/intro.png";
 import logoImage from "@assets/images/login/logo.png";
-import Link from "next/link";
-import LoginForm from "@components/Login/LoginForm/Form";
 
 export default function Login() {
   return (
-    <div className="h-[838px] overflow-hidden grid grid-cols-1 lg:grid-cols-2 rounded-2xl">
+    <div className="h-full overflow-hidden grid grid-cols-1 lg:grid-cols-2 rounded-2xl">
       <div className="h-full flex flex-col justify-start items-center bg-primary">
         <h1 className="mt-[85px] text-4xl font-black text-white ">
           صرافی ارز دیجیتال نیوکوین اسپیس
