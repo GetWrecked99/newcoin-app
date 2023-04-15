@@ -1,0 +1,95 @@
+@font-face {
+  font-family: "YB-Fat";
+  src: url("YekanBakh-Fat.eot");
+  src: url("YekanBakh-Fat.eot?#iefix") format("embedded-opentype"),
+    url("YekanBakh-Fat.woff2") format("woff2"),
+    url("YekanBakh-Fat.woff") format("woff"),
+    url("YekanBakh-Fat.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "YB-Hairline";
+  src: url("YekanBakh-Hairline.eot");
+  src: url("YekanBakh-Hairline.eot?#iefix") format("embedded-opentype"),
+    url("YekanBakh-Hairline.woff2") format("woff2"),
+    url("YekanBakh-Hairline.woff") format("woff"),
+    url("YekanBakh-Hairline.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "YB-Heavy";
+  src: url("YekanBakh-Heavy.eot");
+  src: url("YekanBakh-Heavy.eot?#iefix") format("embedded-opentype"),
+    url("YekanBakh-Heavy.woff2") format("woff2"),
+    url("YekanBakh-Heavy.woff") format("woff"),
+    url("YekanBakh-Heavy.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "YB-Light";
+  src: url("YekanBakh-Light.eot");
+  src: url("YekanBakh-Light.eot?#iefix") format("embedded-opentype"),
+    url("YekanBakh-Light.woff2") format("woff2"),
+    url("YekanBakh-Light.woff") format("woff"),
+    url("YekanBakh-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "YB-Medium";
+  src: url("YekanBakh-Medium.eot");
+  src: url("YekanBakh-Medium.eot?#iefix") format("embedded-opentype"),
+    url("YekanBakh-Medium.woff2") format("woff2"),
+    url("YekanBakh-Medium.woff") format("woff"),
+    url("YekanBakh-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "YB-Regular";
+  src: url("YekanBakh-Regular.eot");
+  src: url("YekanBakh-Regular.eot?#iefix") format("embedded-opentype"),
+    url("YekanBakh-Regular.woff2") format("woff2"),
+    url("YekanBakh-Regular.woff") format("woff"),
+    url("YekanBakh-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "YB-Bold";
+  src: url("YekanBakh-Bold.eot");
+  src: url("YekanBakh-Bold.eot?#iefix") format("embedded-opentype"),
+    url("YekanBakh-Bold.woff2") format("woff2"),
+    url("YekanBakh-Bold.woff") format("woff"),
+    url("YekanBakh-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "YB-Thin";
+  src: url("YekanBakh-Thin.eot");
+  src: url("YekanBakh-Thin.eot?#iefix") format("embedded-opentype"),
+    url("YekanBakh-Thin.woff2") format("woff2"),
+    url("YekanBakh-Thin.woff") format("woff"),
+    url("YekanBakh-Thin.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
