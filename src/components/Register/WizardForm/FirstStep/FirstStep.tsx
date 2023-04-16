@@ -29,7 +29,7 @@ export default function FirstStep({
   });
   return (
     <div className="flex flex-col h-full">
-      <div className="flex flex-col flex-grow"></div>
+      <div className="w-full max-w-[582px] flex flex-col flex-grow mx-auto bg-red-400"></div>
       <div className="flex flex-col">
         <div className="h-[1px] bg-[#D6D6D6]"></div>
         <div className="mt-8 flex items-end justify-end">

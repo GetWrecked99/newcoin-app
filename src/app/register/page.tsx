@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
-import { Form } from "@components/common/Forms/Form/Form";
+import { Form } from "@components/common/Form/Form";
 import RegisterSidebar from "@components/Register/Sidebar/RegisterSidebar";
 import RegisterContent from "@components/Register/Content/RegisterContent";
 import FirstStep from "@components/Register/WizardForm/FirstStep/FirstStep";
