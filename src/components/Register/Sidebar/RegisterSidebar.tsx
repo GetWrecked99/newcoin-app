@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import Image from "next/image";
 
-import { stepperInformation } from "@core/constants/register/register.constants";
+import { stepperInformation } from "@core/constants/register-page/register.constants";
 
 import logoImage from "@assets/images/login/logo.png";
 
