@@ -39,38 +39,43 @@ export default function Register() {
 
   return (
     <div className="h-full overflow-hidden grid grid-cols-5 rounded-2xl">
-      <RegisterSidebar currentFormStep={formStep} />
-      <RegisterContent currentFormStep={formStep + 1}>
-        <div className="flex flex-col flex-grow">
-          <Form
-            handleSubmit={handleSubmit}
-            onSubmit={onSubmit}
-            className="h-full"
-          >
-            {formStep === 0 ? (
-              <FirstStep
-                control={control}
-                errors={errors}
-                nextFormStep={nextFormStep}
-                setValue={setValue}
-                getValues={getValues}
-              />
-            ) : formStep === 1 ? (
-              <SecondStep
-                control={control}
-                nextFormStep={nextFormStep}
-                prevFormStep={prevFormStep}
-              />
-            ) : (
-              <ThirdStep
-                control={control}
-                onSubmit={onSubmit}
-                prevFormStep={prevFormStep}
-              />
-            )}
-          </Form>
-        </div>
-      </RegisterContent>
+      <div className="hidden xl:block">
+        <RegisterSidebar currentFormStep={formStep} />
+      </div>
+      <div className="col-span-5 xl:col-span-4">
+        <RegisterContent currentFormStep={formStep + 1}>
+          <div className="flex flex-col flex-grow">
+            <Form
+              handleSubmit={handleSubmit}
+              onSubmit={onSubmit}
+              className="h-full"
+            >
+              {formStep === 0 ? (
+                <FirstStep
+                  control={control}
+                  errors={errors}
+                  nextFormStep={nextFormStep}
+                  setValue={setValue}
+                  getValues={getValues}
+                />
+              ) : formStep === 1 ? (
+                <SecondStep
+                  control={control}
+                  nextFormStep={nextFormStep}
+                  prevFormStep={prevFormStep}
+                />
+              ) : (
+                <ThirdStep
+                  control={control}
+                  errors={errors}
+                  onSubmit={onSubmit}
+                  prevFormStep={prevFormStep}
+                />
+              )}
+            </Form>
+          </div>
+        </RegisterContent>
+      </div>
     </div>
   );
 }

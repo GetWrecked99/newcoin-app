@@ -1,41 +1,106 @@
+import InnerTextInput from "@components/common/CustomInputs/InnerTextInput/InnerTextInput";
+import FormField from "@components/common/FormField/FormField";
 import PrimaryButton from "@components/common/PrimaryButton/PrimaryButton";
 import { RegisterFormType } from "@core/types/form-types/register-form.types";
 import { Control, useController } from "react-hook-form";
+
+import LocationIcon from "@assets/icons/location.svg";
+import AddressIcon from "@assets/icons/address.svg";
 
 interface Props {
   control: Control<RegisterFormType>;
   prevFormStep: () => void;
   onSubmit: (value: any) => void;
+  errors: any;
 }
 
-export default function ThirdStep({ control, prevFormStep, onSubmit }: Props) {
-  const { field: provinceField, fieldState: provinceState } = useController({
+export default function ThirdStep({
+  control,
+  prevFormStep,
+  onSubmit,
+  errors,
+}: Props) {
+  const { field: provinceField } = useController({
     name: "province",
     control: control,
   });
 
-  const { field: cityField, fieldState: cityState } = useController({
+  const { field: cityField } = useController({
     name: "city",
     control: control,
   });
 
-  const { field: addressField, fieldState: addressState } = useController({
+  const { field: addressField } = useController({
     name: "address",
     control: control,
   });
 
-  const { field: latitudeField, fieldState: latitudeState } = useController({
+  const { field: latitudeField } = useController({
     name: "latitude",
     control: control,
   });
 
-  const { field: longitudeField, fieldState: longitudeState } = useController({
+  const { field: longitudeField } = useController({
     name: "longitude",
     control: control,
   });
   return (
     <div className="flex flex-col h-full">
-      <div className="flex flex-col flex-grow">333</div>
+      <div className="w-full max-w-[660px] flex-grow mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-10">
+          <FormField
+            label="استان"
+            fieldName={provinceField.name}
+            fieldError={errors}
+            fieldIcon={<LocationIcon />}
+          >
+            <InnerTextInput field={provinceField} placeHolder="انتخاب استان" />
+          </FormField>
+          <FormField
+            label="شهر"
+            fieldName={cityField.name}
+            fieldError={errors}
+            fieldIcon={<LocationIcon />}
+          >
+            <InnerTextInput field={cityField} placeHolder="انتخاب شهر" />
+          </FormField>
+          <div className="md:col-span-2">
+            <FormField
+              label="آدرس"
+              fieldName={addressField.name}
+              fieldError={errors}
+              fieldIcon={<AddressIcon />}
+            >
+              <InnerTextInput
+                field={addressField}
+                placeHolder="لطفا آدرس خود را وارد نمایید"
+              />
+            </FormField>
+          </div>
+          <FormField
+            label="طول جغرافیایی"
+            fieldName={longitudeField.name}
+            fieldError={errors}
+            fieldIcon={<LocationIcon />}
+          >
+            <InnerTextInput
+              field={longitudeField}
+              placeHolder="طول جغرافیایی محل سکونت"
+            />
+          </FormField>
+          <FormField
+            label="عرض جغرافیایی"
+            fieldName={latitudeField.name}
+            fieldError={errors}
+            fieldIcon={<LocationIcon />}
+          >
+            <InnerTextInput
+              field={latitudeField}
+              placeHolder="عرض جغرافیایی محل سکونت"
+            />
+          </FormField>
+        </div>
+      </div>
       <div className="flex flex-col">
         <div className="h-[1px] bg-[#D6D6D6]"></div>
         <div className="mt-8 flex items-center justify-between">
@@ -45,7 +110,9 @@ export default function ThirdStep({ control, prevFormStep, onSubmit }: Props) {
           >
             مرحله قبل
           </button>
-          <PrimaryButton onSubmit={onSubmit}>ثبت نام</PrimaryButton>
+          <PrimaryButton type="submit" onSubmit={onSubmit}>
+            ثبت نام
+          </PrimaryButton>
         </div>
       </div>
     </div>
