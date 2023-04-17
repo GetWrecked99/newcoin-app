@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 import introImage from "@assets/images/login/intro.png";
-import logoImage from "@assets/images/login/logo.png";
+import logoImage from "@assets/images/common/logo.png";
 import LoginForm from "@components/Login/LoginForm/LoginForm";
 
 export default function Login() {

@@ -76,8 +76,8 @@ export const registerFormValidation = Yup.object({
   longitude: longitudeValidation,
   province: provinceValidation,
   city: cityValidation,
-  //   password: passwordValidation,
-  //   passwordConfirmation: passwordConfirmation,
+  password: passwordValidation,
+  confirmPassword: passwordConfirmation,
   birthDate: birthDateValidation,
   //   securityCode : codeValidation
 });

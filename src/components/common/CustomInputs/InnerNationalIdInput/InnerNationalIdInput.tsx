@@ -22,7 +22,6 @@ export default function InnerNationalIdInput({
   placeHolder,
 }: Props) {
   const [idValue, setIdValue] = useState(getValues(field.name));
-  console.log(getValues(field.name));
 
   const onChange = (value: React.ChangeEvent<HTMLInputElement>) => {
     setIdValue(value.target.value);

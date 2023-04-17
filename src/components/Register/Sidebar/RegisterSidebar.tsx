@@ -3,7 +3,7 @@ import Image from "next/image";
 
 import { stepperInformation } from "@core/constants/register-page/register.constants";
 
-import logoImage from "@assets/images/login/logo.png";
+import logoImage from "@assets/images/common/logo.png";
 
 interface Props {
   currentFormStep: number;

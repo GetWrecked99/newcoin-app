@@ -11,6 +11,8 @@ import PrimaryButton from "@components/common/PrimaryButton/PrimaryButton";
 import React from "react";
 
 import MailIcon from "@assets/icons/messagetext.svg";
+import LockIcon from "@assets/icons/lock.svg";
+import InnerPasswordInput from "@components/common/CustomInputs/InnerPasswordInput/InnerPasswordInput";
 
 export default function LoginForm() {
   const {
@@ -27,6 +29,10 @@ export default function LoginForm() {
     control: control,
   });
 
+  const { field: passwordField } = useController({
+    name: "password",
+    control: control,
+  });
   const onSubmit = (data: FieldValues) => console.log(data);
 
   return (
@@ -46,6 +52,19 @@ export default function LoginForm() {
           placeHolder="لطفا پست الکترونیکی خود را وارد نمایید"
         />
       </FormField>
+      <div className="w-full mt-5">
+        <FormField
+          label="رمز عبور"
+          fieldName={passwordField.name}
+          fieldError={errors}
+          fieldIcon={<LockIcon />}
+        >
+          <InnerPasswordInput
+            field={passwordField}
+            placeHolder="لطفا رمز عبور خود را وارد نمایید"
+          />
+        </FormField>
+      </div>
       <PrimaryButton type="submit" className="mt-12">
         ورود
       </PrimaryButton>

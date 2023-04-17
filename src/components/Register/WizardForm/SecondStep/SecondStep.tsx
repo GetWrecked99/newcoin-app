@@ -9,6 +9,9 @@ import InnerTextInput from "@components/common/CustomInputs/InnerTextInput/Inner
 import FormField from "@components/common/FormField/FormField";
 import PrimaryButton from "@components/common/PrimaryButton/PrimaryButton";
 
+import LockIcon from "@assets/icons/lock.svg";
+import InnerPasswordInput from "@components/common/CustomInputs/InnerPasswordInput/InnerPasswordInput";
+
 import PhoneIcon from "@assets/icons/mobile.svg";
 import MailIcon from "@assets/icons/messagetext.svg";
 
@@ -35,6 +38,16 @@ export default function SecondStep({
     control: control,
   });
 
+  const { field: passwordField } = useController({
+    name: "password",
+    control: control,
+  });
+
+  const { field: confirmPasswordField } = useController({
+    name: "confirmPassword",
+    control: control,
+  });
+
   return (
     <div className="flex flex-col h-full">
       <div className="w-full max-w-[582px] flex flex-col flex-grow mx-auto">
@@ -49,7 +62,7 @@ export default function SecondStep({
             placeHolder="لطفا شماره خود را وارد نمایید"
           />
         </FormField>
-        <div className="mt-12">
+        <div className="mt-5">
           <FormField
             label="ایمیل"
             fieldName={emailField.name}
@@ -59,6 +72,32 @@ export default function SecondStep({
             <InnerTextInput
               field={emailField}
               placeHolder="لطفا پست الکترونیکی خود را وارد نمایید"
+            />
+          </FormField>
+        </div>
+        <div className="w-full mt-5">
+          <FormField
+            label="رمز عبور"
+            fieldName={passwordField.name}
+            fieldError={errors}
+            fieldIcon={<LockIcon />}
+          >
+            <InnerPasswordInput
+              field={passwordField}
+              placeHolder="لطفا رمز عبور خود را وارد نمایید"
+            />
+          </FormField>
+        </div>
+        <div className="w-full mt-5">
+          <FormField
+            label="تکرار رمز عبور"
+            fieldName={confirmPasswordField.name}
+            fieldError={errors}
+            fieldIcon={<LockIcon />}
+          >
+            <InnerPasswordInput
+              field={confirmPasswordField}
+              placeHolder="لطفا رمز عبور خود را مجددا وارد نمایید"
             />
           </FormField>
         </div>

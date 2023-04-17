@@ -5,6 +5,8 @@ export const initialRegisterValues: RegisterFormType = {
   nationalId: "",
   birthDate: "",
   phoneNumber: "",
+  password: "",
+  confirmPassword: "",
   email: "",
   province: "",
   city: "",
