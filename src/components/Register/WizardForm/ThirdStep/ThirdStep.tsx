@@ -11,6 +11,7 @@ import {
 
 import LocationIcon from "@assets/icons/location.svg";
 import AddressIcon from "@assets/icons/address.svg";
+import InnerComboBox from "@components/common/CustomInputs/InnerComboBox/InnerComboBox";
 
 interface Props {
   control: Control<FieldValues>;
@@ -67,7 +68,8 @@ export default function ThirdStep({
             fieldError={errors}
             fieldIcon={<LocationIcon />}
           >
-            <InnerTextInput field={cityField} placeHolder="انتخاب شهر" />
+            {/* <InnerTextInput field={cityField} placeHolder="انتخاب شهر" /> */}
+            {/* <InnerComboBox /> */}
           </FormField>
           <div className="md:col-span-2">
             <FormField
