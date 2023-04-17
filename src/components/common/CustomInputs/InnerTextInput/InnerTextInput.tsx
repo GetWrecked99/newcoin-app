@@ -16,6 +16,7 @@ export default function InnerTextInput({
       className="w-full h-full rounded-full pr-[1px] pt-1 pl-[22px] outline-none placeholder:text-right"
       placeholder={placeHolder}
       {...field}
+      autoComplete="off"
     />
   );
 }

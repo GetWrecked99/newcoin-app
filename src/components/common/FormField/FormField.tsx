@@ -30,12 +30,12 @@ export default function FormField({
           {label}
         </label>
       </div>
-      <div className="min-h-[45px]">
+      <div className="min-h-[35px]">
         <ErrorMessage
           name={fieldName}
           errors={fieldError}
           render={({ message }) => (
-            <p className="block pt-3 pr-1 text-xs font-bold text-red-500">
+            <p className="block pt-3 pr-1 text-xs 2xl:text-sm font-bold text-red-500">
               {message}
             </p>
           )}

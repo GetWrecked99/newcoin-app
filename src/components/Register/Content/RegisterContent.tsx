@@ -9,7 +9,7 @@ interface Props {
 
 export default function RegisterContent({ children, currentFormStep }: Props) {
   return (
-    <div className="h-full flex flex-col p-8 bg-white">
+    <div className="h-full flex flex-col p-8 bg-white rounded-e-2xl">
       <RegisterHeader currentFormStep={currentFormStep} />
       <div className="flex flex-col flex-grow">{children}</div>
     </div>

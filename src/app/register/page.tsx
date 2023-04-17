@@ -42,7 +42,7 @@ export default function Register() {
   const onSubmit = (data: FieldValues) => console.log(data);
 
   return (
-    <div className="h-full overflow-hidden grid grid-cols-5 rounded-2xl">
+    <div className="h-full grid grid-cols-5 rounded-2xl">
       <div className="hidden xl:block">
         <RegisterSidebar currentFormStep={formStep} />
       </div>

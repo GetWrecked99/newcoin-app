@@ -7,11 +7,8 @@ import LoginForm from "@components/Login/LoginForm/LoginForm";
 
 export default function Login() {
   return (
-    <div
-      className="h-full
-     overflow-hidden grid grid-cols-1 lg:grid-cols-2 rounded-2xl"
-    >
-      <div className="h-full flex flex-col justify-start items-center bg-primary">
+    <div className="h-full grid grid-cols-1 lg:grid-cols-2 rounded-2xl">
+      <div className="h-full flex flex-col justify-start items-center bg-primary rounded-s-2xl">
         <h1 className="mt-[85px] text-4xl font-black text-white ">
           صرافی ارز دیجیتال نیوکوین اسپیس
         </h1>
@@ -23,7 +20,7 @@ export default function Login() {
           <Image src={introImage} alt="NewCoin Intro" />
         </figure>
       </div>
-      <div className="h-full flex flex-col justify-start items-center bg-white">
+      <div className="h-full flex flex-col justify-start items-center bg-white rounded-e-2xl">
         <figure className="mt-[88px]">
           <Image src={logoImage} alt="NewCoin Logo" />
         </figure>

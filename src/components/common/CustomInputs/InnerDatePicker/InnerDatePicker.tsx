@@ -44,7 +44,7 @@ export default function InnerDatePicker({
       ref={ref}
       placeholder={placeHolder}
       value={dateValue || ""}
-      className="text-sm rounded-full w-full !h-full pr-[1px] pt-1 pl-[22px] outline-none appearance-none"
+      className="text-sm rounded-full w-full !h-full pr-[1px] pt-1 pl-[22px] outline-none appearance-none placeholder:text-base"
     />
   );
   return (
@@ -65,6 +65,7 @@ export default function InnerDatePicker({
               setValue(field.name, "");
               setDateValue(getValues(field.name));
             }}
+            className="text-sm !px-6 !py-3"
           >
             تنظیم مجدد
           </PrimaryButton>
