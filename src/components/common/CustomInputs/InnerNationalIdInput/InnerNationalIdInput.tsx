@@ -22,6 +22,7 @@ export default function InnerNationalIdInput({
   placeHolder,
 }: Props) {
   const [idValue, setIdValue] = useState(getValues(field.name));
+  console.log(getValues(field.name));
 
   const onChange = (value: React.ChangeEvent<HTMLInputElement>) => {
     setIdValue(value.target.value);
@@ -29,10 +30,7 @@ export default function InnerNationalIdInput({
     setValue(field.name, formattedValue);
   };
   return (
-    <div
-      className="w-full h-full"
-      onBlur={() => setValue(field.name, idValue, { shouldTouch: true })}
-    >
+    <div className="w-full h-full">
       <PatternFormat
         value={idValue}
         name={field.name}

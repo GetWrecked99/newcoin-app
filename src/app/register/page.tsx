@@ -65,6 +65,7 @@ export default function Register() {
               ) : formStep === 1 ? (
                 <SecondStep
                   control={control}
+                  errors={errors}
                   nextFormStep={nextFormStep}
                   prevFormStep={prevFormStep}
                 />

@@ -43,11 +43,19 @@ const addressValidation = Yup.string().required("پر کردن این فیلد �
 
 const codeValidation = Yup.string().required("کد تایید نامعتبر است !");
 
-const latitudeValidation = Yup.string().required("پر کردن این فیلد الزامیست !");
+const latitudeValidation = Yup.string()
+  .required("پر کردن این فیلد الزامیست !")
+  .matches(
+    /^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$/,
+    "موقعیت جغرافیایی تنها اعداد صحیح و اعشاری می پذیرد !"
+  );
 
-const longitudeValidation = Yup.string().required(
-  "پر کردن این فیلد الزامیست !"
-);
+const longitudeValidation = Yup.string()
+  .required("پر کردن این فیلد الزامیست !")
+  .matches(
+    /^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$/,
+    "موقعیت جغرافیایی تنها اعداد صحیح و اعشاری می پذیرد !"
+  );
 
 const provinceValidation = Yup.string().required("پر کردن این فیلد الزامیست !");
 

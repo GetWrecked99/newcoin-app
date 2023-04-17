@@ -104,6 +104,7 @@ export default function ThirdStep({
         <div className="h-[1px] bg-[#D6D6D6]"></div>
         <div className="mt-8 flex items-center justify-between">
           <button
+            type="button"
             onClick={prevFormStep}
             className="text-base font-bold text-primary"
           >
