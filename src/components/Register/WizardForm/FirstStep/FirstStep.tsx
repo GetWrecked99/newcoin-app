@@ -1,5 +1,6 @@
 import {
   Control,
+  FieldErrors,
   FieldValues,
   UseFormGetValues,
   UseFormSetValue,
@@ -18,11 +19,11 @@ import NationalIdIcon from "@assets/icons/card.svg";
 import BirthDateIcon from "@assets/icons/calendar.svg";
 
 interface Props {
-  control: Control<RegisterFormType>;
+  control: Control<FieldValues>;
   nextFormStep: () => void;
-  errors: any;
-  setValue: UseFormSetValue<RegisterFormType>;
-  getValues: UseFormGetValues<RegisterFormType>;
+  errors: FieldErrors<FieldValues>;
+  setValue: UseFormSetValue<FieldValues>;
+  getValues: UseFormGetValues<FieldValues>;
 }
 
 export default function FirstStep({

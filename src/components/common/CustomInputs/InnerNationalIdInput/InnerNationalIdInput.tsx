@@ -1,5 +1,6 @@
 import { PatternFormat } from "react-number-format";
 import {
+  ControllerRenderProps,
   FieldValues,
   UseControllerProps,
   UseFormGetValues,
@@ -9,9 +10,9 @@ import { useState } from "react";
 import { RegisterFormType } from "@core/types/form-types/register-form.types";
 
 interface Props {
-  field: UseControllerProps<RegisterFormType>;
-  setValue: UseFormSetValue<RegisterFormType>;
-  getValues: UseFormGetValues<RegisterFormType>;
+  field: UseControllerProps<FieldValues>;
+  setValue: UseFormSetValue<FieldValues>;
+  getValues: UseFormGetValues<FieldValues>;
   placeHolder: string;
 }
 export default function InnerNationalIdInput({

@@ -1,9 +1,9 @@
 import PrimaryButton from "@components/common/PrimaryButton/PrimaryButton";
 import { RegisterFormType } from "@core/types/form-types/register-form.types";
-import { Control, useController } from "react-hook-form";
+import { Control, FieldValues, useController } from "react-hook-form";
 
 interface Props {
-  control: Control<RegisterFormType>;
+  control: Control<FieldValues>;
   nextFormStep: () => void;
   prevFormStep: () => void;
 }

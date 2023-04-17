@@ -1,12 +1,13 @@
 import { ReactNode } from "react";
 import { ErrorMessage } from "@hookform/error-message";
-import { FieldError } from "react-hook-form";
+import { FieldErrors, FieldValues } from "react-hook-form";
+import { RegisterFormType } from "@core/types/form-types/register-form.types";
 
 interface Props {
   children: ReactNode;
   label: string;
-  fieldName: string;
-  fieldError: FieldError | undefined;
+  fieldName: keyof FieldValues;
+  fieldError: FieldErrors<FieldValues>;
   fieldIcon: ReactNode;
 }
 
@@ -33,11 +34,13 @@ export default function FormField({
         <ErrorMessage
           name={fieldName}
           errors={fieldError}
-          render={({ message }) => <p>{message}</p>}
+          render={({ message }) => (
+            <p className="block pt-3 pr-1 text-xs font-bold text-red-500">
+              {message}
+            </p>
+          )}
         />
       </div>
     </div>
   );
 }
-
-// className="block pt-2 text-xs font-bold text-red-500"

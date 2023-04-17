@@ -1,17 +1,22 @@
 import InnerTextInput from "@components/common/CustomInputs/InnerTextInput/InnerTextInput";
 import FormField from "@components/common/FormField/FormField";
 import PrimaryButton from "@components/common/PrimaryButton/PrimaryButton";
-import { RegisterFormType } from "@core/types/form-types/register-form.types";
-import { Control, useController } from "react-hook-form";
+
+import {
+  Control,
+  FieldErrors,
+  FieldValues,
+  useController,
+} from "react-hook-form";
 
 import LocationIcon from "@assets/icons/location.svg";
 import AddressIcon from "@assets/icons/address.svg";
 
 interface Props {
-  control: Control<RegisterFormType>;
+  control: Control<FieldValues>;
   prevFormStep: () => void;
-  onSubmit: (value: any) => void;
-  errors: any;
+  onSubmit: (value: FieldValues) => void;
+  errors: FieldErrors<FieldValues>;
 }
 
 export default function ThirdStep({
@@ -83,10 +88,7 @@ export default function ThirdStep({
             fieldError={errors}
             fieldIcon={<LocationIcon />}
           >
-            <InnerTextInput
-              field={longitudeField}
-              placeHolder="طول جغرافیایی محل سکونت"
-            />
+            <InnerTextInput field={longitudeField} placeHolder="محل سکونت" />
           </FormField>
           <FormField
             label="عرض جغرافیایی"
@@ -94,10 +96,7 @@ export default function ThirdStep({
             fieldError={errors}
             fieldIcon={<LocationIcon />}
           >
-            <InnerTextInput
-              field={latitudeField}
-              placeHolder="عرض جغرافیایی محل سکونت"
-            />
+            <InnerTextInput field={latitudeField} placeHolder="محل سکونت" />
           </FormField>
         </div>
       </div>

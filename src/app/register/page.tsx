@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { FieldValues, useForm } from "react-hook-form";
 
 import { Form } from "@components/common/Form/Form";
 import RegisterSidebar from "@components/Register/Sidebar/RegisterSidebar";
@@ -11,6 +11,9 @@ import SecondStep from "@components/Register/WizardForm/SecondStep/SecondStep";
 import ThirdStep from "@components/Register/WizardForm/ThirdStep/ThirdStep";
 
 import { initialRegisterValues } from "@core/constants/forms/register-form/register-form.constants";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { registerFormValidation } from "@core/validations/validation";
+import { RegisterFormType } from "@core/types/form-types/register-form.types";
 
 export default function Register() {
   const [formStep, setFormStep] = useState(0);
@@ -31,11 +34,12 @@ export default function Register() {
     formState: { errors },
     setValue,
     getValues,
-  } = useForm({
+  } = useForm<FieldValues>({
     defaultValues: initialRegisterValues,
+    resolver: yupResolver(registerFormValidation),
   });
 
-  const onSubmit = (data: any) => console.log(data);
+  const onSubmit = (data: FieldValues) => console.log(data);
 
   return (
     <div className="h-full overflow-hidden grid grid-cols-5 rounded-2xl">

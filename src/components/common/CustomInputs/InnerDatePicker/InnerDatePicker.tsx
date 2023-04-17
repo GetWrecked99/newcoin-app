@@ -4,6 +4,7 @@ import PrimaryButton from "@components/common/PrimaryButton/PrimaryButton";
 import { RegisterFormType } from "@core/types/form-types/register-form.types";
 import { useState } from "react";
 import {
+  FieldValues,
   UseControllerProps,
   UseFormGetValues,
   UseFormSetValue,
@@ -16,9 +17,9 @@ interface Data {
 }
 
 interface Props {
-  field: UseControllerProps<RegisterFormType>;
-  setValue: UseFormSetValue<RegisterFormType>;
-  getValues: UseFormGetValues<RegisterFormType>;
+  field: UseControllerProps<FieldValues>;
+  setValue: UseFormSetValue<FieldValues>;
+  getValues: UseFormGetValues<FieldValues>;
   placeHolder: string;
 }
 
