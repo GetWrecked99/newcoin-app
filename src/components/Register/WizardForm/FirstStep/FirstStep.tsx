@@ -1,7 +1,3 @@
-import InnerTextInput from "@components/common/CustomInputs/InnerTextInput/InnerTextInput";
-import FormField from "@components/common/FormField/FormField";
-import PrimaryButton from "@components/common/PrimaryButton/PrimaryButton";
-import { RegisterFormType } from "@core/types/form-types/register-form.types";
 import {
   Control,
   FieldValues,
@@ -10,9 +6,16 @@ import {
   useController,
 } from "react-hook-form";
 
-import FullNameIcon from "@assets/icons/usersquare.svg";
-import NationalIdIcon from "../../../../assets/icons/card.svg";
+import InnerTextInput from "@components/common/CustomInputs/InnerTextInput/InnerTextInput";
+import FormField from "@components/common/FormField/FormField";
+import PrimaryButton from "@components/common/PrimaryButton/PrimaryButton";
+import { RegisterFormType } from "@core/types/form-types/register-form.types";
 import InnerNationalIdInput from "@components/common/CustomInputs/InnerNationalIdInput/InnerNationalIdInput";
+import InnerDatePicker from "@components/common/CustomInputs/InnerDatePicker/InnerDatePicker";
+
+import FullNameIcon from "@assets/icons/usersquare.svg";
+import NationalIdIcon from "@assets/icons/card.svg";
+import BirthDateIcon from "@assets/icons/calendar.svg";
 
 interface Props {
   control: Control<RegisterFormType>;
@@ -29,19 +32,17 @@ export default function FirstStep({
   setValue,
   getValues,
 }: Props): JSX.Element {
-  const { field: fullNameField, fieldState: fullNameState } = useController({
+  const { field: fullNameField } = useController({
     name: "fullName",
     control: control,
   });
 
-  const { field: nationalIdField, fieldState: nationalIdState } = useController(
-    {
-      name: "nationalId",
-      control: control,
-    }
-  );
+  const { field: nationalIdField } = useController({
+    name: "nationalId",
+    control: control,
+  });
 
-  const { field: birthDateField, fieldState: birthDateState } = useController({
+  const { field: birthDateField } = useController({
     name: "birthDate",
     control: control,
   });
@@ -75,11 +76,28 @@ export default function FirstStep({
             />
           </FormField>
         </div>
+        <div className="mt-10">
+          <FormField
+            label="تاریخ تولد"
+            fieldName={birthDateField.name}
+            fieldError={errors}
+            fieldIcon={<BirthDateIcon />}
+          >
+            <InnerDatePicker
+              field={birthDateField}
+              setValue={setValue}
+              getValues={getValues}
+              placeHolder="لطفا تاریخ تولد خود را وارد نمایید"
+            />
+          </FormField>
+        </div>
       </div>
       <div className="flex flex-col">
         <div className="h-[1px] bg-[#D6D6D6]"></div>
         <div className="mt-8 flex items-end justify-end">
-          <PrimaryButton onClick={nextFormStep}>مرحله بعد</PrimaryButton>
+          <PrimaryButton type="button" onClick={nextFormStep}>
+            مرحله بعد
+          </PrimaryButton>
         </div>
       </div>
     </div>

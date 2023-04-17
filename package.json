@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@amir04lm26/react-modern-calendar-date-picker": "^1.0.1",
     "@hookform/error-message": "^2.0.1",
     "@types/node": "18.15.11",
     "@types/react": "18.0.35",
