@@ -2,20 +2,32 @@ import InnerTextInput from "@components/common/CustomInputs/InnerTextInput/Inner
 import FormField from "@components/common/FormField/FormField";
 import PrimaryButton from "@components/common/PrimaryButton/PrimaryButton";
 import { RegisterFormType } from "@core/types/form-types/register-form.types";
-import { Control, useController } from "react-hook-form";
+import {
+  Control,
+  FieldValues,
+  UseFormGetValues,
+  UseFormSetValue,
+  useController,
+} from "react-hook-form";
 
-import FullNameIcon from "../../../../assets/icons/usersquare.svg";
+import FullNameIcon from "@assets/icons/usersquare.svg";
+import NationalIdIcon from "../../../../assets/icons/card.svg";
+import InnerNationalIdInput from "@components/common/CustomInputs/InnerNationalIdInput/InnerNationalIdInput";
 
 interface Props {
   control: Control<RegisterFormType>;
   nextFormStep: () => void;
   errors: any;
+  setValue: UseFormSetValue<RegisterFormType>;
+  getValues: UseFormGetValues<RegisterFormType>;
 }
 
 export default function FirstStep({
   control,
   nextFormStep,
   errors,
+  setValue,
+  getValues,
 }: Props): JSX.Element {
   const { field: fullNameField, fieldState: fullNameState } = useController({
     name: "fullName",
@@ -48,6 +60,21 @@ export default function FirstStep({
             placeHolder="لطفا نام و نام خانوادگی خود را وارد نمایید"
           />
         </FormField>
+        <div className="mt-10">
+          <FormField
+            label="کد ملی"
+            fieldName={nationalIdField.name}
+            fieldError={errors}
+            fieldIcon={<NationalIdIcon />}
+          >
+            <InnerNationalIdInput
+              field={nationalIdField}
+              setValue={setValue}
+              getValues={getValues}
+              placeHolder="لطفا کد ملی خود را وارد نمایید"
+            />
+          </FormField>
+        </div>
       </div>
       <div className="flex flex-col">
         <div className="h-[1px] bg-[#D6D6D6]"></div>

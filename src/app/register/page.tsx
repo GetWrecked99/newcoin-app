@@ -29,6 +29,8 @@ export default function Register() {
     handleSubmit,
     control,
     formState: { errors },
+    setValue,
+    getValues,
   } = useForm({
     defaultValues: initialRegisterValues,
   });
@@ -50,6 +52,8 @@ export default function Register() {
                 control={control}
                 errors={errors}
                 nextFormStep={nextFormStep}
+                setValue={setValue}
+                getValues={getValues}
               />
             ) : formStep === 1 ? (
               <SecondStep
