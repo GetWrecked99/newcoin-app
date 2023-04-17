@@ -25,7 +25,11 @@ export default function Register() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const { handleSubmit, control } = useForm({
+  const {
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm({
     defaultValues: initialRegisterValues,
   });
 
@@ -42,7 +46,11 @@ export default function Register() {
             className="h-full"
           >
             {formStep === 0 ? (
-              <FirstStep control={control} nextFormStep={nextFormStep} />
+              <FirstStep
+                control={control}
+                errors={errors}
+                nextFormStep={nextFormStep}
+              />
             ) : formStep === 1 ? (
               <SecondStep
                 control={control}
