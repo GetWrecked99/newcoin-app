@@ -19,7 +19,7 @@ export default function FormField({
   fieldIcon,
 }: Props) {
   return (
-    <div className="flex flex-col items-start ">
+    <div className="w-full flex flex-col items-start">
       <div className="relative border-[1px] w-full h-[60px] border-[#D6D6D6] flex flex-row items-center rounded-full">
         <i className="flex items-center mx-[22px]">{fieldIcon}</i>
         <div className="flex items-center ml-[21px]">

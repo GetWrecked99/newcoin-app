@@ -3,6 +3,7 @@ import Image from "next/image";
 
 import introImage from "@assets/images/login/intro.png";
 import logoImage from "@assets/images/login/logo.png";
+import LoginForm from "@components/Login/LoginForm/LoginForm";
 
 export default function Login() {
   return (
@@ -36,7 +37,9 @@ export default function Login() {
           هنوز ثبت نام نکرده‌اید؟
         </Link>
         {/* Form and inputs for loggin-in are inside of LoginForm Component */}
-        {/* <LoginForm /> */}
+        <div className="w-full max-w-[582px] flex flex-col flex-grow">
+          <LoginForm />
+        </div>
       </div>
     </div>
   );

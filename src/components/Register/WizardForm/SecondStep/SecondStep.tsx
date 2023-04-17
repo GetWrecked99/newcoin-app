@@ -1,13 +1,13 @@
-import InnerTextInput from "@components/common/CustomInputs/InnerTextInput/InnerTextInput";
-import FormField from "@components/common/FormField/FormField";
-import PrimaryButton from "@components/common/PrimaryButton/PrimaryButton";
-import { RegisterFormType } from "@core/types/form-types/register-form.types";
 import {
   Control,
   FieldErrors,
   FieldValues,
   useController,
 } from "react-hook-form";
+
+import InnerTextInput from "@components/common/CustomInputs/InnerTextInput/InnerTextInput";
+import FormField from "@components/common/FormField/FormField";
+import PrimaryButton from "@components/common/PrimaryButton/PrimaryButton";
 
 import PhoneIcon from "@assets/icons/mobile.svg";
 import MailIcon from "@assets/icons/messagetext.svg";
