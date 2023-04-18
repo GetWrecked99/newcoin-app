@@ -11,12 +11,7 @@
   font-family: Yekan;
 }
 
-html {
-  height: 100%;
-}
-
 body {
   direction: rtl;
-  height: 100%;
   background-color: #e8f4ff;
 }
