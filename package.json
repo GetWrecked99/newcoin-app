@@ -20,6 +20,7 @@
     "autoprefixer": "10.4.14",
     "eslint": "8.38.0",
     "eslint-config-next": "13.3.0",
+    "iran-city": "^1.1.4",
     "next": "^13.3.1-canary.7",
     "postcss": "8.4.21",
     "react": "18.2.0",

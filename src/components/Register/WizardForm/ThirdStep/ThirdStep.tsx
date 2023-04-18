@@ -12,6 +12,11 @@ import {
 import LocationIcon from "@assets/icons/location.svg";
 import AddressIcon from "@assets/icons/address.svg";
 import InnerComboBox from "@components/common/CustomInputs/InnerComboBox/InnerComboBox";
+import { useEffect, useState } from "react";
+import {
+  formattedProvinces,
+  getCitiesOfProvinceById,
+} from "@core/utils/iran-city/iran-city.utils";
 
 interface Props {
   control: Control<FieldValues>;
@@ -26,6 +31,23 @@ export default function ThirdStep({
   onSubmit,
   errors,
 }: Props) {
+  const allProvinces = formattedProvinces();
+  const [selectedProvince, setSelectedProvince] = useState<any>({});
+  const [selectedCity, setSelectedCity] = useState<any>({});
+  const [citiesOfProvince, setCitiesOfProvince] = useState<
+    {
+      id: number;
+      name: string;
+    }[]
+  >([]);
+
+  useEffect(() => {
+    if (selectedProvince) {
+      const cities = getCitiesOfProvinceById(selectedProvince);
+      setCitiesOfProvince(cities);
+    }
+  }, [selectedProvince]);
+  console.log(selectedCity, citiesOfProvince);
   const { field: provinceField } = useController({
     name: "province",
     control: control,
@@ -50,6 +72,16 @@ export default function ThirdStep({
     name: "longitude",
     control: control,
   });
+
+  const onSelectProvince = (value: number) => {
+    setSelectedProvince(value);
+    setSelectedCity({});
+  };
+
+  const onSelectCity = (value: number) => {
+    setSelectedCity(value);
+  };
+
   return (
     <div className="flex flex-col h-full">
       <div className="w-full max-w-[660px] flex-grow mx-auto">
@@ -60,7 +92,12 @@ export default function ThirdStep({
             fieldError={errors}
             fieldIcon={<LocationIcon />}
           >
-            <InnerTextInput field={provinceField} placeHolder="انتخاب استان" />
+            <InnerComboBox
+              optionsList={allProvinces}
+              selectedOption={selectedProvince}
+              setSelectedOption={onSelectProvince}
+              placeHolder="انتخاب استان"
+            />
           </FormField>
           <FormField
             label="شهر"
@@ -68,8 +105,12 @@ export default function ThirdStep({
             fieldError={errors}
             fieldIcon={<LocationIcon />}
           >
-            {/* <InnerTextInput field={cityField} placeHolder="انتخاب شهر" /> */}
-            {/* <InnerComboBox /> */}
+            <InnerComboBox
+              optionsList={citiesOfProvince}
+              selectedOption={selectedCity}
+              setSelectedOption={onSelectCity}
+              placeHolder="انتخاب شهر"
+            />
           </FormField>
           <div className="md:col-span-2">
             <FormField

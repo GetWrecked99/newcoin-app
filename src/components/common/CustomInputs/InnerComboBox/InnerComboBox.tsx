@@ -3,30 +3,19 @@ import React, { Fragment, useState } from "react";
 import { CheckIcon } from "@heroicons/react/20/solid";
 import { BsChevronDown } from "react-icons/bs";
 
-// interface Props {
-//   data: any[];
-// }
-
-const people = [
-  { id: 1, name: "شهر شهر" },
-  { id: 2, name: "شهر شهر" },
-  { id: 3, name: "شهر شهر" },
-  { id: 4, name: "شهر شهر" },
-  { id: 5, name: "شهر شهر" },
-];
-
 interface Props {
-  selectedOption: any;
-  setSelectedOption: any;
+  selectedOption: number;
+  setSelectedOption: (value: number) => void;
   optionsList: { id: number; name: string }[];
+  placeHolder: string;
 }
 
 export default function InnerComboBox({
   selectedOption,
   setSelectedOption,
   optionsList,
+  placeHolder,
 }: Props) {
-  //   const [selectedOption, setSelectedOption] = useState();
   const [query, setQuery] = useState("");
 
   const filteredItem =
@@ -43,6 +32,7 @@ export default function InnerComboBox({
           onChange={(event) => setQuery(event.target.value)}
           displayValue={(item: { id: number; name: string }) => item.name}
           className="!w-full !h-full rounded-e-full focus:outline-none sm:text-md"
+          placeholder={placeHolder}
         />
         <Combobox.Button className="absolute inset-y-[30px] left-6 flex items-center rounded-r-md px-2 focus:outline-none text-[#D6D6D6]">
           <BsChevronDown className="h-5 w-5" />
@@ -57,8 +47,6 @@ export default function InnerComboBox({
         >
           <Combobox.Options className="absolute mt-1 max-h-60 w-full overflow-y-auto rounded-md bg-slate-50 border-[1px] border-slate-100 py-1 text-base shadow-xl focus:outline-none sm:text-sm">
             {filteredItem.map((item) => (
-              /* Use the `active` state to conditionally style the active option. */
-              /* Use the `selected` state to conditionally style the selected option. */
               <Combobox.Option key={item.id} value={item} as={Fragment}>
                 {({ active, selected }) => (
                   <li
