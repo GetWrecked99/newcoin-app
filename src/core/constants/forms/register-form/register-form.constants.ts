@@ -8,9 +8,10 @@ export const initialRegisterValues: RegisterFormType = {
   password: "",
   confirmPassword: "",
   email: "",
-  province: "",
-  city: "",
+  province: null,
+  city: null,
   address: "",
   latitude: "",
   longitude: "",
+  securityCode: "",
 };

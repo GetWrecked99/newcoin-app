@@ -18,16 +18,6 @@ import { RegisterFormType } from "@core/types/form-types/register-form.types";
 export default function Register() {
   const [formStep, setFormStep] = useState(0);
 
-  const nextFormStep = () => {
-    setFormStep((currentStep) => currentStep + 1);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
-  const prevFormStep = () => {
-    setFormStep((currentStep) => currentStep - 1);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
   const {
     handleSubmit,
     control,
@@ -40,6 +30,16 @@ export default function Register() {
   });
 
   const onSubmit = (data: FieldValues) => console.log(data);
+
+  const nextFormStep = () => {
+    setFormStep((currentStep) => currentStep + 1);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const prevFormStep = () => {
+    setFormStep((currentStep) => currentStep - 1);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <div className="h-full grid grid-cols-5 rounded-2xl">

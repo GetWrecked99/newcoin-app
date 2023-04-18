@@ -6,8 +6,8 @@ export type RegisterFormType = {
   confirmPassword: string;
   phoneNumber: string;
   email: string;
-  province: string;
-  city: string;
+  province: { id: number; name: string } | null;
+  city: { id: number; name: string } | null;
   address: string;
   latitude: string;
   longitude: string;
