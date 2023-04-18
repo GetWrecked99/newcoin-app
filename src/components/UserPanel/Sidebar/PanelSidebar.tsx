@@ -11,7 +11,7 @@ interface Props {
 
 export default function PanelSidebar({ pathName }: Props) {
   return (
-    <div className="hidden lg:flex md:flex-col w-[250px] md:overflow-hidden bg-white rounded-2xl py-4 px-7">
+    <div className="hidden xl:flex xl:flex-col w-[250px] 2xl:w-[350px] xl:overflow-hidden bg-white rounded-2xl py-4 px-7">
       <div className="flex-1 flex flex-col min-h-0">
         <div className="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
           <div className="flex-shrink-0 flex flex-col items-center">
