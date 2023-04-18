@@ -10,13 +10,13 @@ import {
 import InnerTextInput from "@components/common/CustomInputs/InnerTextInput/InnerTextInput";
 import FormField from "@components/common/FormField/FormField";
 import PrimaryButton from "@components/common/PrimaryButton/PrimaryButton";
-import { RegisterFormType } from "@core/types/form-types/register-form.types";
 import InnerNationalIdInput from "@components/common/CustomInputs/InnerNationalIdInput/InnerNationalIdInput";
 import InnerDatePicker from "@components/common/CustomInputs/InnerDatePicker/InnerDatePicker";
 
 import FullNameIcon from "@assets/icons/usersquare.svg";
 import NationalIdIcon from "@assets/icons/card.svg";
 import BirthDateIcon from "@assets/icons/calendar.svg";
+import ArrowIcon from "@assets/icons/arrowleft.svg";
 
 interface Props {
   control: Control<FieldValues>;
@@ -93,11 +93,18 @@ export default function FirstStep({
           </FormField>
         </div>
       </div>
-      <div className="flex flex-col">
+      <div className="flex flex-col mt-12">
         <div className="h-[1px] bg-[#D6D6D6]"></div>
         <div className="mt-8 flex items-end justify-end">
-          <PrimaryButton type="button" onClick={nextFormStep}>
-            مرحله بعد
+          <PrimaryButton
+            type="button"
+            className="flex items-center"
+            onClick={nextFormStep}
+          >
+            <span className="ml-4"> مرحله بعد</span>
+            <i>
+              <ArrowIcon />
+            </i>
           </PrimaryButton>
         </div>
       </div>

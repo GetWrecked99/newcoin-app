@@ -11,4 +11,5 @@ export type RegisterFormType = {
   address: string;
   latitude: string;
   longitude: string;
+  securityCode: string;
 };

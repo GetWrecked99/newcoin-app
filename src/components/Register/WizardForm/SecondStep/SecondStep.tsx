@@ -14,6 +14,10 @@ import InnerPasswordInput from "@components/common/CustomInputs/InnerPasswordInp
 
 import PhoneIcon from "@assets/icons/mobile.svg";
 import MailIcon from "@assets/icons/messagetext.svg";
+import TickIcon from "@assets/icons/clipboardtick.svg";
+import OTPInput from "react-otp-input";
+import { useState } from "react";
+import ArrowIcon from "@assets/icons/arrowleft.svg";
 
 interface Props {
   control: Control<FieldValues>;
@@ -48,20 +52,55 @@ export default function SecondStep({
     control: control,
   });
 
+  const [opt, setOpt] = useState("");
+
   return (
     <div className="flex flex-col h-full">
       <div className="w-full max-w-[582px] flex flex-col flex-grow mx-auto">
-        <FormField
-          label="شماره موبایل"
-          fieldName={phoneNumberField.name}
-          fieldError={errors}
-          fieldIcon={<PhoneIcon />}
-        >
-          <InnerTextInput
-            field={phoneNumberField}
-            placeHolder="لطفا شماره خود را وارد نمایید"
-          />
-        </FormField>
+        <div className="flex flex-col">
+          <FormField
+            label="شماره موبایل"
+            fieldName={phoneNumberField.name}
+            fieldError={errors}
+            fieldIcon={<PhoneIcon />}
+          >
+            <InnerTextInput
+              field={phoneNumberField}
+              placeHolder="لطفا شماره خود را وارد نمایید"
+            />
+          </FormField>
+          <div className="flex flex-col justify-center mb-10">
+            <div className="h-16 flex items-center px-7 bg-[#E8F4FF] rounded-full">
+              <i className="ml-6">
+                <TickIcon />
+              </i>
+              <p className="text-sm text-black mt-1">
+                کد تائید به شماره {phoneNumberField.value} ارسال شده است. این کد
+                تا 02:00 دقیقه دیگر معتبر است
+              </p>
+            </div>
+            <div className="flex flex-col items-center mt-[26px]">
+              <span className="text-base text-black font-bold text-center ">
+                کد تایید
+              </span>
+              <div dir="ltr" className="flex flex-row my-4">
+                <OTPInput
+                  value={opt}
+                  onChange={setOpt}
+                  numInputs={4}
+                  renderSeparator={<span className="w-[10px]"></span>}
+                  renderInput={(props) => (
+                    <input
+                      {...props}
+                      className="!w-[60px] !h-[60px] border-[1px] border-[#D6D6D6] rounded-2xl text-center outline-none"
+                    />
+                  )}
+                />
+              </div>
+              <PrimaryButton type="button">تایید شماره همراه</PrimaryButton>
+            </div>
+          </div>
+        </div>
         <div className="mt-5">
           <FormField
             label="ایمیل"
@@ -102,7 +141,7 @@ export default function SecondStep({
           </FormField>
         </div>
       </div>
-      <div className="flex flex-col">
+      <div className="flex flex-col mt-12">
         <div className="h-[1px] bg-[#D6D6D6]"></div>
         <div className="mt-8 flex items-center justify-between">
           <button
@@ -112,8 +151,15 @@ export default function SecondStep({
           >
             مرحله قبل
           </button>
-          <PrimaryButton type="button" onClick={nextFormStep}>
-            مرحله بعد
+          <PrimaryButton
+            type="button"
+            className="flex items-center"
+            onClick={nextFormStep}
+          >
+            <span className="ml-4"> مرحله بعد</span>
+            <i>
+              <ArrowIcon />
+            </i>
           </PrimaryButton>
         </div>
       </div>

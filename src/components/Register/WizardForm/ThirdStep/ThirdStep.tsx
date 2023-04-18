@@ -6,6 +6,7 @@ import {
   Control,
   FieldErrors,
   FieldValues,
+  UseFormSetValue,
   useController,
 } from "react-hook-form";
 
@@ -17,12 +18,14 @@ import {
   formattedProvinces,
   getCitiesOfProvinceById,
 } from "@core/utils/iran-city/iran-city.utils";
+import ArrowIcon from "@assets/icons/arrowleft.svg";
 
 interface Props {
   control: Control<FieldValues>;
   prevFormStep: () => void;
   onSubmit: (value: FieldValues) => void;
   errors: FieldErrors<FieldValues>;
+  setValue: UseFormSetValue<FieldValues>;
 }
 
 export default function ThirdStep({
@@ -30,6 +33,7 @@ export default function ThirdStep({
   prevFormStep,
   onSubmit,
   errors,
+  setValue,
 }: Props) {
   const allProvinces = formattedProvinces();
   const [selectedProvince, setSelectedProvince] = useState<any>({});
@@ -47,7 +51,7 @@ export default function ThirdStep({
       setCitiesOfProvince(cities);
     }
   }, [selectedProvince]);
-  console.log(selectedCity, citiesOfProvince);
+
   const { field: provinceField } = useController({
     name: "province",
     control: control,
@@ -63,6 +67,8 @@ export default function ThirdStep({
     control: control,
   });
 
+  console.log(addressField.value);
+
   const { field: latitudeField } = useController({
     name: "latitude",
     control: control,
@@ -75,11 +81,13 @@ export default function ThirdStep({
 
   const onSelectProvince = (value: number) => {
     setSelectedProvince(value);
+    setValue(provinceField.name, value);
     setSelectedCity({});
   };
 
   const onSelectCity = (value: number) => {
     setSelectedCity(value);
+    setValue(cityField.name, value);
   };
 
   return (
@@ -143,7 +151,7 @@ export default function ThirdStep({
           </FormField>
         </div>
       </div>
-      <div className="flex flex-col">
+      <div className="flex flex-col mt-12">
         <div className="h-[1px] bg-[#D6D6D6]"></div>
         <div className="mt-8 flex items-center justify-between">
           <button
@@ -153,8 +161,11 @@ export default function ThirdStep({
           >
             مرحله قبل
           </button>
-          <PrimaryButton type="submit" onSubmit={onSubmit}>
-            ثبت نام
+          <PrimaryButton className="flex items-center" onSubmit={onSubmit}>
+            <span className="ml-4">ثبت نام</span>
+            <i>
+              <ArrowIcon />
+            </i>
           </PrimaryButton>
         </div>
       </div>

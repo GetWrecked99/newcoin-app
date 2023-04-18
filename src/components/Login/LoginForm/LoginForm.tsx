@@ -12,6 +12,7 @@ import React from "react";
 
 import MailIcon from "@assets/icons/messagetext.svg";
 import LockIcon from "@assets/icons/lock.svg";
+import ArrowIcon from "@assets/icons/arrowleft.svg";
 import InnerPasswordInput from "@components/common/CustomInputs/InnerPasswordInput/InnerPasswordInput";
 
 export default function LoginForm() {
@@ -65,8 +66,11 @@ export default function LoginForm() {
           />
         </FormField>
       </div>
-      <PrimaryButton type="submit" className="mt-12">
-        ورود
+      <PrimaryButton type="submit" className="mt-12 flex items-center">
+        <span className="ml-4">ورود به حساب</span>
+        <i>
+          <ArrowIcon />
+        </i>
       </PrimaryButton>
     </Form>
   );

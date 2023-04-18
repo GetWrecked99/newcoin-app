@@ -75,6 +75,7 @@ export default function Register() {
                   errors={errors}
                   onSubmit={onSubmit}
                   prevFormStep={prevFormStep}
+                  setValue={setValue}
                 />
               )}
             </Form>

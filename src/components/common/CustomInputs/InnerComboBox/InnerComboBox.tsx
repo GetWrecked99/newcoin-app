@@ -33,6 +33,7 @@ export default function InnerComboBox({
           displayValue={(item: { id: number; name: string }) => item.name}
           className="!w-full !h-full rounded-e-full focus:outline-none sm:text-md"
           placeholder={placeHolder}
+          autoComplete="off"
         />
         <Combobox.Button className="absolute inset-y-[30px] left-6 flex items-center rounded-r-md px-2 focus:outline-none text-[#D6D6D6]">
           <BsChevronDown className="h-5 w-5" />

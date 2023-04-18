@@ -57,9 +57,19 @@ const longitudeValidation = Yup.string()
     "موقعیت جغرافیایی تنها اعداد صحیح و اعشاری می پذیرد !"
   );
 
-const provinceValidation = Yup.string().required("پر کردن این فیلد الزامیست !");
+const provinceValidation = Yup.object()
+  .shape({
+    id: Yup.number(),
+    name: Yup.string(),
+  })
+  .required("پر کردن این فیلد الزامیست !");
 
-const cityValidation = Yup.string().required("پر کردن این فیلد الزامیست !");
+const cityValidation = Yup.object()
+  .shape({
+    id: Yup.number(),
+    name: Yup.string(),
+  })
+  .required("پر کردن این فیلد الزامیست !");
 
 export const loginFormValidation = Yup.object({
   email: emailValidation,
@@ -79,5 +89,5 @@ export const registerFormValidation = Yup.object({
   password: passwordValidation,
   confirmPassword: passwordConfirmation,
   birthDate: birthDateValidation,
-  //   securityCode : codeValidation
+  securityCode: codeValidation,
 });
