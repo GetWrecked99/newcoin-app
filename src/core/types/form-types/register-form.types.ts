@@ -1,3 +1,5 @@
+import { geoAddressType } from "../constant-types/register/register.types";
+
 export type RegisterFormType = {
   fullName: string;
   nationalId: string;
@@ -6,8 +8,8 @@ export type RegisterFormType = {
   confirmPassword: string;
   phoneNumber: string;
   email: string;
-  province: { id: number; name: string } | null;
-  city: { id: number; name: string } | null;
+  province: geoAddressType;
+  city: geoAddressType;
   address: string;
   latitude: string;
   longitude: string;

@@ -1,27 +1,23 @@
-import { PatternFormat } from "react-number-format";
+import { useState } from "react";
 import {
   ControllerRenderProps,
   FieldValues,
-  UseControllerProps,
-  UseFormGetValues,
   UseFormSetValue,
 } from "react-hook-form";
-import { useState } from "react";
-import { RegisterFormType } from "@core/types/form-types/register-form.types";
+
+import { PatternFormat } from "react-number-format";
 
 interface Props {
-  field: UseControllerProps<FieldValues>;
+  field: ControllerRenderProps<FieldValues, any>;
   setValue: UseFormSetValue<FieldValues>;
-  getValues: UseFormGetValues<FieldValues>;
   placeHolder: string;
 }
 export default function InnerNationalIdInput({
   field,
   setValue,
-  getValues,
   placeHolder,
 }: Props) {
-  const [idValue, setIdValue] = useState(getValues(field.name));
+  const [idValue, setIdValue] = useState(field.value);
 
   const onChange = (value: React.ChangeEvent<HTMLInputElement>) => {
     setIdValue(value.target.value);

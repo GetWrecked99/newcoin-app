@@ -13,18 +13,18 @@ import PrimaryButton from "@components/common/PrimaryButton/PrimaryButton";
 import InnerNationalIdInput from "@components/common/CustomInputs/InnerNationalIdInput/InnerNationalIdInput";
 import InnerDatePicker from "@components/common/CustomInputs/InnerDatePicker/InnerDatePicker";
 
+import { firstStepFieldNames } from "@core/constants/forms/register-form/register-form.constants";
+
 import FullNameIcon from "@assets/icons/usersquare.svg";
 import NationalIdIcon from "@assets/icons/card.svg";
 import BirthDateIcon from "@assets/icons/calendar.svg";
 import ArrowIcon from "@assets/icons/arrowleft.svg";
-import { firstStepFieldNames } from "@core/constants/forms/register-form/register-form.constants";
 
 interface Props {
   control: Control<FieldValues>;
   nextFormStep: (fieldNames: string[]) => Promise<void>;
   errors: FieldErrors<FieldValues>;
   setValue: UseFormSetValue<FieldValues>;
-  getValues: UseFormGetValues<FieldValues>;
 }
 
 export default function FirstStep({
@@ -32,7 +32,6 @@ export default function FirstStep({
   nextFormStep,
   errors,
   setValue,
-  getValues,
 }: Props): JSX.Element {
   const { field: fullNameField } = useController({
     name: "fullName",
@@ -73,7 +72,6 @@ export default function FirstStep({
             <InnerNationalIdInput
               field={nationalIdField}
               setValue={setValue}
-              getValues={getValues}
               placeHolder="لطفا کد ملی خود را وارد نمایید"
             />
           </FormField>
@@ -88,7 +86,6 @@ export default function FirstStep({
             <InnerDatePicker
               field={birthDateField}
               setValue={setValue}
-              getValues={getValues}
               placeHolder="لطفا تاریخ تولد خود را وارد نمایید"
             />
           </FormField>

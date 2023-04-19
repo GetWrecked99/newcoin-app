@@ -1,7 +1,7 @@
-import { FieldValues, UseControllerProps } from "react-hook-form";
+import { ControllerRenderProps, FieldValues } from "react-hook-form";
 
 interface Props {
-  field: UseControllerProps<FieldValues>;
+  field: ControllerRenderProps<FieldValues, any>;
   placeHolder: string;
   isInputDisabled?: boolean;
 }

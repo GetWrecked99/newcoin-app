@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { FieldValues, UseControllerProps } from "react-hook-form";
+import { ControllerRenderProps, FieldValues } from "react-hook-form";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
 interface Props {
-  field: UseControllerProps<FieldValues>;
+  field: ControllerRenderProps<FieldValues, any>;
   placeHolder: string;
 }
 

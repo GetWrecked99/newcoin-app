@@ -2,11 +2,15 @@ import { Combobox, Transition } from "@headlessui/react";
 import React, { Fragment, useState } from "react";
 import { CheckIcon } from "@heroicons/react/20/solid";
 import { BsChevronDown } from "react-icons/bs";
+import {
+  comboboxType,
+  geoAddressType,
+} from "@core/types/constant-types/register/register.types";
 
 interface Props {
-  selectedOption: number;
-  setSelectedOption: (value: number) => void;
-  optionsList: { id: number; name: string }[];
+  selectedOption: geoAddressType;
+  setSelectedOption: (value: comboboxType) => void;
+  optionsList: comboboxType[];
   placeHolder: string;
 }
 
@@ -24,13 +28,12 @@ export default function InnerComboBox({
       : optionsList.filter((option) => {
           return option.name.toLowerCase().includes(query.toLowerCase());
         });
-
   return (
     <div className="relative z-[50] w-full h-full">
       <Combobox value={selectedOption} onChange={setSelectedOption}>
         <Combobox.Input
           onChange={(event) => setQuery(event.target.value)}
-          displayValue={(item: { id: number; name: string }) => item.name}
+          displayValue={(item: geoAddressType) => (item ? item.name : "")}
           className="!w-full !h-full rounded-e-full focus:outline-none sm:text-md"
           placeholder={placeHolder}
           autoComplete="off"

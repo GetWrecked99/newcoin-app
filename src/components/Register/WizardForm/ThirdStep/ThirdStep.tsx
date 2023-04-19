@@ -22,6 +22,10 @@ import ArrowIcon from "@assets/icons/arrowleft.svg";
 
 import CustomMap from "./CustomMap/CustomMap";
 import Modal from "@components/common/Modal/Modal";
+import {
+  comboboxType,
+  geoAddressType,
+} from "@core/types/constant-types/register/register.types";
 
 interface Props {
   control: Control<FieldValues>;
@@ -39,14 +43,10 @@ export default function ThirdStep({
   setValue,
 }: Props) {
   const allProvinces = formattedProvinces();
-  const [selectedProvince, setSelectedProvince] = useState<any>({});
-  const [selectedCity, setSelectedCity] = useState<any>({});
-  const [citiesOfProvince, setCitiesOfProvince] = useState<
-    {
-      id: number;
-      name: string;
-    }[]
-  >([]);
+  const [selectedProvince, setSelectedProvince] =
+    useState<geoAddressType>(null);
+  const [selectedCity, setSelectedCity] = useState<geoAddressType>(null);
+  const [citiesOfProvince, setCitiesOfProvince] = useState<comboboxType[]>([]);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [mapPosition, setMapPosition] = useState({
     lat: 36.5659,
@@ -85,13 +85,13 @@ export default function ThirdStep({
     control: control,
   });
 
-  const onSelectProvince = (value: number) => {
+  const onSelectProvince = (value: comboboxType) => {
     setSelectedProvince(value);
     setValue(provinceField.name, value);
-    setSelectedCity({});
+    setSelectedCity(null);
   };
 
-  const onSelectCity = (value: number) => {
+  const onSelectCity = (value: comboboxType) => {
     setSelectedCity(value);
     setValue(cityField.name, value);
   };
