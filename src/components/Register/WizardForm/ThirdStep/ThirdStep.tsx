@@ -1,7 +1,4 @@
-import InnerTextInput from "@components/common/CustomInputs/InnerTextInput/InnerTextInput";
-import FormField from "@components/common/FormField/FormField";
-import PrimaryButton from "@components/common/PrimaryButton/PrimaryButton";
-
+import { useState } from "react";
 import {
   Control,
   FieldErrors,
@@ -10,22 +7,22 @@ import {
   useController,
 } from "react-hook-form";
 
-import LocationIcon from "@assets/icons/location.svg";
-import AddressIcon from "@assets/icons/address.svg";
+import InnerTextInput from "@components/common/CustomInputs/InnerTextInput/InnerTextInput";
+import FormField from "@components/common/FormField/FormField";
+import PrimaryButton from "@components/common/PrimaryButton/PrimaryButton";
 import InnerComboBox from "@components/common/CustomInputs/InnerComboBox/InnerComboBox";
-import { useEffect, useState } from "react";
-import {
-  formattedProvinces,
-  getCitiesOfProvinceById,
-} from "@core/utils/iran-city/iran-city.utils";
-import ArrowIcon from "@assets/icons/arrowleft.svg";
-
-import CustomMap from "./CustomMap/CustomMap";
 import Modal from "@components/common/Modal/Modal";
+import CustomMap from "./CustomMap/CustomMap";
+
+import { formattedProvinces } from "@core/utils/iran-city/iran-city.utils";
 import {
   comboboxType,
   geoAddressType,
 } from "@core/types/constant-types/register/register.types";
+
+import ArrowIcon from "@assets/icons/arrowleft.svg";
+import LocationIcon from "@assets/icons/location.svg";
+import AddressIcon from "@assets/icons/address.svg";
 
 interface Props {
   control: Control<FieldValues>;
@@ -33,6 +30,11 @@ interface Props {
   onSubmit: (value: FieldValues) => void;
   errors: FieldErrors<FieldValues>;
   setValue: UseFormSetValue<FieldValues>;
+  selectedProvince: geoAddressType;
+  onSelectProvince: (value: comboboxType) => void;
+  selectedCity: geoAddressType;
+  onSelectCity: (value: comboboxType) => void;
+  citiesOfProvince: comboboxType[];
 }
 
 export default function ThirdStep({
@@ -41,24 +43,18 @@ export default function ThirdStep({
   onSubmit,
   errors,
   setValue,
+  selectedProvince,
+  onSelectProvince,
+  selectedCity,
+  onSelectCity,
+  citiesOfProvince,
 }: Props) {
   const allProvinces = formattedProvinces();
-  const [selectedProvince, setSelectedProvince] =
-    useState<geoAddressType>(null);
-  const [selectedCity, setSelectedCity] = useState<geoAddressType>(null);
-  const [citiesOfProvince, setCitiesOfProvince] = useState<comboboxType[]>([]);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [mapPosition, setMapPosition] = useState({
     lat: 36.5659,
     lng: 53.0586,
   });
-
-  useEffect(() => {
-    if (selectedProvince) {
-      const cities = getCitiesOfProvinceById(selectedProvince);
-      setCitiesOfProvince(cities);
-    }
-  }, [selectedProvince]);
 
   const { field: provinceField } = useController({
     name: "province",
@@ -84,17 +80,6 @@ export default function ThirdStep({
     name: "longitude",
     control: control,
   });
-
-  const onSelectProvince = (value: comboboxType) => {
-    setSelectedProvince(value);
-    setValue(provinceField.name, value);
-    setSelectedCity(null);
-  };
-
-  const onSelectCity = (value: comboboxType) => {
-    setSelectedCity(value);
-    setValue(cityField.name, value);
-  };
 
   const onSubmitPosition = () => {
     setValue(latitudeField.name, mapPosition.lat);

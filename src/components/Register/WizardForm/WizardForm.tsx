@@ -1,9 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Control,
   FieldErrors,
   FieldValues,
-  UseFormGetValues,
   UseFormSetValue,
   UseFormTrigger,
 } from "react-hook-form";
@@ -13,6 +12,11 @@ import SecondStep from "./SecondStep/SecondStep";
 import ThirdStep from "./ThirdStep/ThirdStep";
 
 import { getSeedRandom } from "@core/utils/seed-random/seed-random.utils";
+import { getCitiesOfProvinceById } from "@core/utils/iran-city/iran-city.utils";
+import {
+  comboboxType,
+  geoAddressType,
+} from "@core/types/constant-types/register/register.types";
 
 interface Props {
   control: Control<FieldValues>;
@@ -64,6 +68,32 @@ export default function WizardForm({
   };
   /* end of the 2nd step handlers. */
 
+  /* starts states and life cycle for third step as well as we done that for 2nd step in the top */
+  const [selectedProvince, setSelectedProvince] =
+    useState<geoAddressType>(null);
+  const [selectedCity, setSelectedCity] = useState<geoAddressType>(null);
+  const [citiesOfProvince, setCitiesOfProvince] = useState<comboboxType[]>([]);
+  useEffect(() => {
+    if (selectedProvince) {
+      const cities = getCitiesOfProvinceById(selectedProvince);
+      setCitiesOfProvince(cities);
+    }
+  }, [selectedProvince]);
+  /* enf of it */
+
+  /* handlers for third step */
+  const onSelectProvince = (value: comboboxType) => {
+    setSelectedProvince(value);
+    setValue("province", value);
+    setSelectedCity(null);
+  };
+
+  const onSelectCity = (value: comboboxType) => {
+    setSelectedCity(value);
+    setValue("city", value);
+  };
+  /* end of it */
+
   return (
     <>
       {formStep === 0 ? (
@@ -94,6 +124,11 @@ export default function WizardForm({
           onSubmit={onSubmit}
           prevFormStep={prevFormStep}
           setValue={setValue}
+          selectedProvince={selectedProvince}
+          onSelectProvince={onSelectProvince}
+          selectedCity={selectedCity}
+          onSelectCity={onSelectCity}
+          citiesOfProvince={citiesOfProvince}
         />
       )}
     </>

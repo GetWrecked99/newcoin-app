@@ -13,7 +13,7 @@ import { initialRegisterValues } from "@core/constants/forms/register-form/regis
 import { registerFormValidation } from "@core/validations/validation";
 
 export default function Register() {
-  const [formStep, setFormStep] = useState(2);
+  const [formStep, setFormStep] = useState(0);
 
   const {
     handleSubmit,
