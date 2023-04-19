@@ -15,3 +15,25 @@ export const initialRegisterValues: RegisterFormType = {
   longitude: "",
   securityCode: "",
 };
+
+export const firstStepFieldNames: string[] = [
+  "fullName",
+  "nationalId",
+  "birthDate",
+];
+
+export const secondStepFieldNames: string[] = [
+  "phoneNumber",
+  "email",
+  "password",
+  "confirmPassword",
+  "securityCode",
+];
+
+export const thirdStepFieldNames: string[] = [
+  "province",
+  "city",
+  "address",
+  "latitude",
+  "longitude",
+];

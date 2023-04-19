@@ -178,15 +178,23 @@ export default function ThirdStep({
                   position={mapPosition}
                   setPosition={setMapPosition}
                 />
-                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-row gap-x-4">
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-row gap-x-4 z-[400]">
                   <PrimaryButton
                     type="button"
                     onClick={() => setIsModalOpen(false)}
+                    className="bg-[#B4B4B4]"
                   >
                     بستن
                   </PrimaryButton>
-                  <PrimaryButton type="button" onClick={onSubmitPosition}>
-                    ثبت
+                  <PrimaryButton
+                    type="button"
+                    onClick={onSubmitPosition}
+                    className="bg-[#EA8E38] flex items-center"
+                  >
+                    <span className="ml-4"> ثبت موقعیت</span>
+                    <i>
+                      <ArrowIcon />
+                    </i>
                   </PrimaryButton>
                 </div>
               </div>

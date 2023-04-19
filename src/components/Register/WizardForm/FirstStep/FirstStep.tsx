@@ -17,10 +17,11 @@ import FullNameIcon from "@assets/icons/usersquare.svg";
 import NationalIdIcon from "@assets/icons/card.svg";
 import BirthDateIcon from "@assets/icons/calendar.svg";
 import ArrowIcon from "@assets/icons/arrowleft.svg";
+import { firstStepFieldNames } from "@core/constants/forms/register-form/register-form.constants";
 
 interface Props {
   control: Control<FieldValues>;
-  nextFormStep: () => void;
+  nextFormStep: (fieldNames: string[]) => Promise<void>;
   errors: FieldErrors<FieldValues>;
   setValue: UseFormSetValue<FieldValues>;
   getValues: UseFormGetValues<FieldValues>;
@@ -99,7 +100,7 @@ export default function FirstStep({
           <PrimaryButton
             type="button"
             className="flex items-center"
-            onClick={nextFormStep}
+            onClick={() => nextFormStep(firstStepFieldNames)}
           >
             <span className="ml-4"> مرحله بعد</span>
             <i>

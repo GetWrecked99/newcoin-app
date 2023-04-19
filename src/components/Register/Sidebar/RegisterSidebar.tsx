@@ -39,10 +39,10 @@ export default function RegisterSidebar({ currentFormStep }: Props) {
 
   return (
     <div className="h-full flex flex-col bg-primary p-8 rounded-s-2xl">
-      <figure className="mx-auto mt-2">
+      <figure className="mx-auto mt-[80px]">
         <Image src={logoImage} alt="NewCoin Logo" />
       </figure>
-      <h1 className="mt-3 text-4xl font-black text-white text-center">
+      <h1 className="mt-11 text-4xl font-black text-white text-center">
         ثبت نام
       </h1>
       <ol className="flex flex-col items-start mt-[90px]">

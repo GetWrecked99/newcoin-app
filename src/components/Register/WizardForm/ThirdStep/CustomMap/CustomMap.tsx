@@ -23,10 +23,10 @@ export default function CustomMap({ position, setPosition }: Props) {
 
   return (
     <MapContainer
-      className="w-full h-full"
-      center={position}
+      className="h-full"
+      center={[36.5659, 53.0586]}
       zoom={13}
-      scrollWheelZoom={false}
+      scrollWheelZoom={true}
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
