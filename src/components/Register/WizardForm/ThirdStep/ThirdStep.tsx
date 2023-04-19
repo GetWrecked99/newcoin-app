@@ -20,6 +20,9 @@ import {
 } from "@core/utils/iran-city/iran-city.utils";
 import ArrowIcon from "@assets/icons/arrowleft.svg";
 
+import CustomMap from "./CustomMap/CustomMap";
+import Modal from "@components/common/Modal/Modal";
+
 interface Props {
   control: Control<FieldValues>;
   prevFormStep: () => void;
@@ -44,6 +47,11 @@ export default function ThirdStep({
       name: string;
     }[]
   >([]);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [mapPosition, setMapPosition] = useState({
+    lat: 36.5659,
+    lng: 53.0586,
+  });
 
   useEffect(() => {
     if (selectedProvince) {
@@ -67,8 +75,6 @@ export default function ThirdStep({
     control: control,
   });
 
-  console.log(addressField.value);
-
   const { field: latitudeField } = useController({
     name: "latitude",
     control: control,
@@ -90,10 +96,16 @@ export default function ThirdStep({
     setValue(cityField.name, value);
   };
 
+  const onSubmitPosition = () => {
+    setValue(latitudeField.name, mapPosition.lat);
+    setValue(longitudeField.name, mapPosition.lng);
+    setIsModalOpen(false);
+  };
+
   return (
     <div className="flex flex-col h-full">
       <div className="w-full max-w-[660px] flex-grow mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-5">
           <FormField
             label="استان"
             fieldName={provinceField.name}
@@ -149,6 +161,37 @@ export default function ThirdStep({
           >
             <InnerTextInput field={latitudeField} placeHolder="محل سکونت" />
           </FormField>
+          <div className="md:col-span-2 flex justify-center">
+            <button
+              type="button"
+              onClick={() => setIsModalOpen(true)}
+              className="text-base font-bold text-primary"
+            >
+              انتخاب طول و عرض جغرافیایی از روی نقشه
+            </button>
+            <Modal
+              isModalOpen={isModalOpen}
+              closeModal={() => setIsModalOpen(false)}
+            >
+              <div className="relative h-[400px]">
+                <CustomMap
+                  position={mapPosition}
+                  setPosition={setMapPosition}
+                />
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-row gap-x-4">
+                  <PrimaryButton
+                    type="button"
+                    onClick={() => setIsModalOpen(false)}
+                  >
+                    بستن
+                  </PrimaryButton>
+                  <PrimaryButton type="button" onClick={onSubmitPosition}>
+                    ثبت
+                  </PrimaryButton>
+                </div>
+              </div>
+            </Modal>
+          </div>
         </div>
       </div>
       <div className="flex flex-col mt-12">
