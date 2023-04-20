@@ -7,9 +7,10 @@ import LogoIcon from "@assets/images/common/logo.png";
 
 interface Props {
   pathName: string | null;
+  onUserExit: () => void;
 }
 
-export default function PanelSidebar({ pathName }: Props) {
+export default function PanelSidebar({ pathName, onUserExit }: Props) {
   return (
     <div className="hidden xl:flex xl:flex-col w-[250px] 2xl:w-[350px] xl:overflow-hidden bg-white rounded-2xl py-4 px-7">
       <div className="flex-1 flex flex-col min-h-0">
@@ -37,6 +38,11 @@ export default function PanelSidebar({ pathName }: Props) {
                     ? " bg-primary text-white"
                     : "text-base hover:bg-primary/10"
                 }`}
+                onClick={() => {
+                  if (item.href === "/") {
+                    onUserExit();
+                  }
+                }}
               >
                 <item.icon
                   className={`ml-[18px] flex-shrink-0 h-6 w-6 ${

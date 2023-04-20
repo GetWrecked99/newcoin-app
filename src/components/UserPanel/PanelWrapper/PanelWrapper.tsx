@@ -8,6 +8,8 @@ import { Dialog, Transition } from "@headlessui/react";
 import { sidebarNavigation } from "@core/constants/userpanel-page/sidebar/sidebar.constants";
 import Link from "next/link";
 import { AiOutlineCloseCircle } from "react-icons/ai";
+import { useDispatch } from "react-redux";
+import { loggedOut } from "@app/GlobalRedux/redux-store/auth/auth.slice";
 
 interface Props {
   children: ReactNode;
@@ -16,6 +18,11 @@ interface Props {
 export default function PanelWrapper({ children }: Props) {
   const currentUrl = usePathname();
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const dispatch = useDispatch();
+
+  const onUserExit = () => {
+    dispatch(loggedOut());
+  };
 
   return (
     <div className="h-full">
@@ -102,7 +109,7 @@ export default function PanelWrapper({ children }: Props) {
         </Dialog>
       </Transition.Root>
       <div className="h-full flex flex-row gap-x-[18px]">
-        <PanelSidebar pathName={currentUrl} />
+        <PanelSidebar pathName={currentUrl} onUserExit={onUserExit} />
         <PanelContent setSidebarOpen={setSidebarOpen}>{children}</PanelContent>
       </div>
     </div>

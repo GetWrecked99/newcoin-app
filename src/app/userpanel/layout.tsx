@@ -1,5 +1,6 @@
-import PanelWrapper from "@components/UserPanel/PanelWrapper/PanelWrapper";
 import React, { ReactNode } from "react";
+
+import PanelWrapper from "@components/UserPanel/PanelWrapper/PanelWrapper";
 
 interface Props {
   children: ReactNode;
