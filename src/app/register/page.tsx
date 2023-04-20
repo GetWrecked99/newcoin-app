@@ -1,20 +1,25 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useSelector } from "react-redux";
+import { useRouter } from "next/navigation";
 
+import { AppState } from "@app/GlobalRedux/store/store";
 import RegisterSidebar from "@components/Register/Sidebar/RegisterSidebar";
 import RegisterContent from "@components/Register/Content/RegisterContent";
 import { Form } from "@components/common/Form/Form";
 import WizardForm from "@components/Register/WizardForm/WizardForm";
+import { toast } from "react-toastify";
 
 import { initialRegisterValues } from "@core/constants/forms/register-form/register-form.constants";
 import { registerFormValidation } from "@core/validations/validation";
 
 export default function Register() {
   const [formStep, setFormStep] = useState(0);
-
+  const { AuthData } = useSelector((state: AppState) => state.AuthData);
+  const router = useRouter();
   const {
     handleSubmit,
     control,
@@ -26,6 +31,17 @@ export default function Register() {
     defaultValues: initialRegisterValues,
     resolver: yupResolver(registerFormValidation),
   });
+
+  useEffect(() => {
+    if (AuthData) {
+      router.push("/userpanel/dashboard");
+      toast.info("هم اکنون در حساب کاربری خود هستید.");
+    }
+  });
+
+  if (AuthData) {
+    return null;
+  }
 
   const onSubmit = (data: FieldValues) => console.log(data);
 

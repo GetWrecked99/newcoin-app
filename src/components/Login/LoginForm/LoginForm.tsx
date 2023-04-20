@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
@@ -21,6 +19,7 @@ import { loginFormValidation } from "@core/validations/validation";
 import MailIcon from "@assets/icons/messagetext.svg";
 import LockIcon from "@assets/icons/lock.svg";
 import ArrowIcon from "@assets/icons/arrowleft.svg";
+import { toast } from "react-toastify";
 
 export default function LoginForm() {
   const router = useRouter();
@@ -54,11 +53,12 @@ export default function LoginForm() {
           dispatch(loggedIn(studentLogin.result));
           setItem("token", studentLogin.token);
           router.push("/userpanel/dashboard");
+          toast.success("با موفقیت وارد شدید.");
         }
       };
       loginApiHandler();
-    } catch (error) {
-      console.error(error);
+    } catch (error: any) {
+      toast.error(error.response.data.message || error.message);
     }
   };
 

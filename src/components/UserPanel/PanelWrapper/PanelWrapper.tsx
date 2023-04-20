@@ -1,14 +1,19 @@
 "use client";
 
-import React, { Fragment, ReactNode, useState } from "react";
+import { AppState } from "@app/GlobalRedux/store/store";
+import { useRouter } from "next/navigation";
+import { useSelector } from "react-redux";
+import Link from "next/link";
+import { AiOutlineCloseCircle } from "react-icons/ai";
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+
+import React, { Fragment, ReactNode, useEffect, useState } from "react";
 import PanelSidebar from "../Sidebar/PanelSidebar";
 import PanelContent from "../Content/PanelContent";
 import { usePathname } from "next/navigation";
 import { Dialog, Transition } from "@headlessui/react";
 import { sidebarNavigation } from "@core/constants/userpanel-page/sidebar/sidebar.constants";
-import Link from "next/link";
-import { AiOutlineCloseCircle } from "react-icons/ai";
-import { useDispatch } from "react-redux";
 import { loggedOut } from "@app/GlobalRedux/redux-store/auth/auth.slice";
 
 interface Props {
@@ -16,13 +21,27 @@ interface Props {
 }
 
 export default function PanelWrapper({ children }: Props) {
-  const currentUrl = usePathname();
+  const { AuthData } = useSelector((state: AppState) => state.AuthData);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const router = useRouter();
+  const currentUrl = usePathname();
   const dispatch = useDispatch();
 
   const onUserExit = () => {
     dispatch(loggedOut());
+    toast.success("از حساب خود خارج شدید.");
   };
+
+  useEffect(() => {
+    if (!AuthData) {
+      router.push("/");
+      toast.info("ابتدا وارد حساب کاربری خود شوید!");
+    }
+  });
+
+  if (!AuthData) {
+    return null;
+  }
 
   return (
     <div className="h-full">
