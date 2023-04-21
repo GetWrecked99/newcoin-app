@@ -1,14 +1,13 @@
+import { FC } from "react";
 import {
   ControllerRenderProps,
   FieldValues,
-  UseFormGetValues,
   UseFormSetValue,
 } from "react-hook-form";
 import DatePicker from "@amir04lm26/react-modern-calendar-date-picker";
 import "@amir04lm26/react-modern-calendar-date-picker/lib/DatePicker.css";
 
 import { PrimaryButton } from "@components/common/PrimaryButton/PrimaryButton";
-import { FC } from "react";
 
 interface Data {
   year: number;
@@ -22,14 +21,18 @@ interface Props {
   placeHolder: string;
 }
 
-const InnerDatePicker: FC<Props> = ({ field, setValue, placeHolder }) => {
+const InnerDatePicker: FC<Props> = ({
+  field,
+  setValue,
+  placeHolder,
+}): JSX.Element => {
   const handleDateChange = (data: Data): void => {
     const formattedDateObject = `${data.year}/${data.month}/${data.day}`;
     setValue(field.name, formattedDateObject);
   };
 
   /* rendering a custom input for date picker */
-  const renderCustomInput = ({ ref }: { ref: any }) => (
+  const renderCustomInput = ({ ref }: { ref: any }): JSX.Element => (
     <input
       readOnly
       ref={ref}
@@ -38,6 +41,7 @@ const InnerDatePicker: FC<Props> = ({ field, setValue, placeHolder }) => {
       className="text-sm rounded-full w-full !h-full pr-[1px] pt-1 pl-[22px] outline-none appearance-none placeholder:text-base"
     />
   );
+  
   return (
     <DatePicker
       onChange={handleDateChange}

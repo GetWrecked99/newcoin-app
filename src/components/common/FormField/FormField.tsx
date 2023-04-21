@@ -1,7 +1,6 @@
 import { FC, ReactNode } from "react";
-import { ErrorMessage } from "@hookform/error-message";
 import { FieldErrors, FieldValues } from "react-hook-form";
-import { RegisterFormType } from "@core/types/form-types/register-form.types";
+import { ErrorMessage } from "@hookform/error-message";
 
 interface Props {
   children: ReactNode;

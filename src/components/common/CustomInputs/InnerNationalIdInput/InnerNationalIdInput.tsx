@@ -4,7 +4,6 @@ import {
   FieldValues,
   UseFormSetValue,
 } from "react-hook-form";
-
 import { PatternFormat } from "react-number-format";
 
 interface Props {

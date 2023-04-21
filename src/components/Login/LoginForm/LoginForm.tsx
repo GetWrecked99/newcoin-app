@@ -3,6 +3,7 @@ import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { FieldValues, useController, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { toast } from "react-toastify";
 
 import { Form } from "@components/common/Form/Form";
 import { FormField } from "@components/common/FormField/FormField";
@@ -14,12 +15,11 @@ import { loginUser } from "@core/services/api/authentication/login.api";
 import { setItem } from "@core/services/storage/localStorage";
 import { initialLoginValues } from "@core/constants/forms/login-form/login-form.constants";
 import { loginFormValidation } from "@core/validations/validation";
+import { loggedIn } from "@core/redux/redux-store/auth/auth.slice";
 
 import MailIcon from "@assets/icons/messagetext.svg";
 import LockIcon from "@assets/icons/lock.svg";
 import ArrowIcon from "@assets/icons/arrowleft.svg";
-import { toast } from "react-toastify";
-import { loggedIn } from "@core/redux/redux-store/auth/auth.slice";
 
 const LoginForm: FC = (): JSX.Element => {
   const router = useRouter();
@@ -43,7 +43,7 @@ const LoginForm: FC = (): JSX.Element => {
     name: "password",
     control: control,
   });
-  const onSubmit = (data: FieldValues) => {
+  const onSubmit = (data: FieldValues): void => {
     try {
       const loginApiHandler = async () => {
         const userLogin = await loginUser(data);

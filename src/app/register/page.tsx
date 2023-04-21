@@ -5,12 +5,12 @@ import { FieldValues, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 import { RegisterSidebar } from "@components/Register/Sidebar/RegisterSidebar";
 import { RegisterContent } from "@components/Register/Content/RegisterContent";
 import { Form } from "@components/common/Form/Form";
 import { WizardForm } from "@components/Register/WizardForm/WizardForm";
-import { toast } from "react-toastify";
 
 import { initialRegisterValues } from "@core/constants/forms/register-form/register-form.constants";
 import { registerFormValidation } from "@core/validations/validation";

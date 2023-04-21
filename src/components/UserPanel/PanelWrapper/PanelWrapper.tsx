@@ -10,8 +10,8 @@ import { AiOutlineCloseCircle } from "react-icons/ai";
 
 import { Dialog, Transition } from "@headlessui/react";
 
-import { PanelSidebar } from "../Sidebar/PanelSidebar";
-import { PanelContent } from "../Content/PanelContent";
+import { PanelSidebar } from "@components/UserPanel/Sidebar/PanelSidebar";
+import { PanelContent } from "@components/UserPanel/Content/PanelContent";
 
 import { sidebarNavigation } from "@core/constants/userpanel-page/sidebar/sidebar.constants";
 import { AppState } from "@core/redux/store/store";
@@ -109,6 +109,11 @@ const PanelWrapper: FC<Props> = ({ children }): JSX.Element | null => {
                           ? " bg-primary text-white"
                           : "text-base hover:bg-primary/10"
                       }`}
+                      onClick={() => {
+                        if (item.href === "/") {
+                          onUserExit();
+                        }
+                      }}
                     >
                       <item.icon
                         className={`ml-[18px] flex-shrink-0 h-6 w-6 ${
@@ -128,9 +133,15 @@ const PanelWrapper: FC<Props> = ({ children }): JSX.Element | null => {
           </div>
         </Dialog>
       </Transition.Root>
-      <div className="h-full flex flex-row gap-x-[18px]">
-        <PanelSidebar pathName={currentUrl} onUserExit={onUserExit} />
-        <PanelContent setSidebarOpen={setSidebarOpen}>{children}</PanelContent>
+      <div className="h-full grid grid-cols-5 gap-x-[18px]">
+        <div className="hidden xl:col-span-1 xl:flex xl:flex-col xl:overflow-hidden bg-white rounded-2xl py-4 px-7">
+          <PanelSidebar pathName={currentUrl} onUserExit={onUserExit} />
+        </div>
+        <div className="col-span-5 xl:col-span-4 overflow-y-auto">
+          <PanelContent setSidebarOpen={setSidebarOpen}>
+            {children}
+          </PanelContent>
+        </div>
       </div>
     </div>
   );

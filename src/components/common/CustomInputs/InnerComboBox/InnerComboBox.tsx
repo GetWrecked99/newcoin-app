@@ -1,7 +1,8 @@
-import { Combobox, Transition } from "@headlessui/react";
 import React, { FC, Fragment, useState } from "react";
+import { Combobox, Transition } from "@headlessui/react";
 import { CheckIcon } from "@heroicons/react/20/solid";
 import { BsChevronDown } from "react-icons/bs";
+
 import {
   comboboxType,
   geoAddressType,

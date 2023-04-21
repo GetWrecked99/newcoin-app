@@ -12,7 +12,7 @@ import { FormField } from "@components/common/FormField/FormField";
 import { PrimaryButton } from "@components/common/PrimaryButton/PrimaryButton";
 import { InnerComboBox } from "@components/common/CustomInputs/InnerComboBox/InnerComboBox";
 import { Modal } from "@components/common/Modal/Modal";
-import { CustomMap } from "./CustomMap/CustomMap";
+import { CustomMap } from "@components/Register/WizardForm/ThirdStep/CustomMap/CustomMap";
 
 import { formattedProvinces } from "@core/utils/iran-city/iran-city.utils";
 import {
@@ -81,7 +81,7 @@ const ThirdStep: FC<Props> = ({
     control: control,
   });
 
-  const onSubmitPosition = () => {
+  const onSubmitPosition = (): void => {
     setValue(latitudeField.name, mapPosition.lat);
     setValue(longitudeField.name, mapPosition.lng);
     setIsModalOpen(false);

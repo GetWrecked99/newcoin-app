@@ -1,9 +1,10 @@
 import { ReactNode } from "react";
 
+import Providers from "@app/provider/provider";
+
 import { Container } from "@components/Container/Container";
 
 import "@assets/styles/globals.css";
-import Providers from "./provider/provider";
 
 interface RootLayoutProps {
   children: ReactNode;

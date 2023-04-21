@@ -1,8 +1,8 @@
+import { FC } from "react";
 import {
   Control,
   FieldErrors,
   FieldValues,
-  UseFormGetValues,
   UseFormSetValue,
   useController,
 } from "react-hook-form";
@@ -19,7 +19,6 @@ import FullNameIcon from "@assets/icons/usersquare.svg";
 import NationalIdIcon from "@assets/icons/card.svg";
 import BirthDateIcon from "@assets/icons/calendar.svg";
 import ArrowIcon from "@assets/icons/arrowleft.svg";
-import { FC } from "react";
 
 interface Props {
   control: Control<FieldValues>;

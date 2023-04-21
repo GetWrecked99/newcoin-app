@@ -1,7 +1,5 @@
-import React, { FC, ReactNode } from "react";
-
+import React, { FC, ReactNode, Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { Fragment } from "react";
 
 interface Props {
   children: ReactNode;

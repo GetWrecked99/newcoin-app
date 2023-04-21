@@ -1,13 +1,15 @@
-import TickIcon from "@assets/icons/clipboardtick.svg";
-import OTPInput from "react-otp-input";
-import { ErrorMessage } from "@hookform/error-message";
-import { PrimaryButton } from "@components/common/PrimaryButton/PrimaryButton";
 import { Dispatch, FC, SetStateAction } from "react";
 import {
   ControllerRenderProps,
   FieldErrors,
   FieldValues,
 } from "react-hook-form";
+import OTPInput from "react-otp-input";
+import { ErrorMessage } from "@hookform/error-message";
+
+import { PrimaryButton } from "@components/common/PrimaryButton/PrimaryButton";
+
+import TickIcon from "@assets/icons/clipboardtick.svg";
 
 interface Props {
   phoneNumberValue: string;

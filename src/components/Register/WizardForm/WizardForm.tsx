@@ -7,9 +7,9 @@ import {
   UseFormTrigger,
 } from "react-hook-form";
 
-import { FirstStep } from "./FirstStep/FirstStep";
-import { SecondStep } from "./SecondStep/SecondStep";
-import { ThirdStep } from "./ThirdStep/ThirdStep";
+import { FirstStep } from "@components/Register/WizardForm/FirstStep/FirstStep";
+import { SecondStep } from "@components/Register/WizardForm/SecondStep/SecondStep";
+import { ThirdStep } from "@components/Register/WizardForm/ThirdStep/ThirdStep";
 
 import { getSeedRandom } from "@core/utils/seed-random/seed-random.utils";
 import { getCitiesOfProvinceById } from "@core/utils/iran-city/iran-city.utils";

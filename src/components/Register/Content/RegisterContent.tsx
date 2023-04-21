@@ -1,6 +1,6 @@
 import { FC, ReactNode } from "react";
 
-import { RegisterHeader } from "./Header/RegisterHeader";
+import { RegisterHeader } from "@components/Register/Content/Header/RegisterHeader";
 
 interface Props {
   children: ReactNode;
