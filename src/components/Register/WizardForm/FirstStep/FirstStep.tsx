@@ -7,11 +7,11 @@ import {
   useController,
 } from "react-hook-form";
 
-import InnerTextInput from "@components/common/CustomInputs/InnerTextInput/InnerTextInput";
-import FormField from "@components/common/FormField/FormField";
-import PrimaryButton from "@components/common/PrimaryButton/PrimaryButton";
-import InnerNationalIdInput from "@components/common/CustomInputs/InnerNationalIdInput/InnerNationalIdInput";
-import InnerDatePicker from "@components/common/CustomInputs/InnerDatePicker/InnerDatePicker";
+import { InnerTextInput } from "@components/common/CustomInputs/InnerTextInput/InnerTextInput";
+import { FormField } from "@components/common/FormField/FormField";
+import { PrimaryButton } from "@components/common/PrimaryButton/PrimaryButton";
+import { InnerNationalIdInput } from "@components/common/CustomInputs/InnerNationalIdInput/InnerNationalIdInput";
+import { InnerDatePicker } from "@components/common/CustomInputs/InnerDatePicker/InnerDatePicker";
 
 import { firstStepFieldNames } from "@core/constants/forms/register-form/register-form.constants";
 
@@ -19,6 +19,7 @@ import FullNameIcon from "@assets/icons/usersquare.svg";
 import NationalIdIcon from "@assets/icons/card.svg";
 import BirthDateIcon from "@assets/icons/calendar.svg";
 import ArrowIcon from "@assets/icons/arrowleft.svg";
+import { FC } from "react";
 
 interface Props {
   control: Control<FieldValues>;
@@ -27,12 +28,12 @@ interface Props {
   setValue: UseFormSetValue<FieldValues>;
 }
 
-export default function FirstStep({
+const FirstStep: FC<Props> = ({
   control,
   nextFormStep,
   errors,
   setValue,
-}: Props): JSX.Element {
+}): JSX.Element => {
   const { field: fullNameField } = useController({
     name: "fullName",
     control: control,
@@ -108,4 +109,6 @@ export default function FirstStep({
       </div>
     </div>
   );
-}
+};
+
+export { FirstStep };

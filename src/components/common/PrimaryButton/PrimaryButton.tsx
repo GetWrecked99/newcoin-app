@@ -1,13 +1,8 @@
-import { DetailedHTMLProps, ButtonHTMLAttributes } from "react";
+import { DetailedHTMLProps, ButtonHTMLAttributes, FC } from "react";
 
-export default function PrimaryButton({
-  children,
-  className,
-  ...restOfAttributes
-}: DetailedHTMLProps<
-  ButtonHTMLAttributes<HTMLButtonElement>,
-  HTMLButtonElement
->) {
+const PrimaryButton: FC<
+  DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>
+> = ({ children, className, ...restOfAttributes }): JSX.Element => {
   return (
     <button
       className={
@@ -19,4 +14,6 @@ export default function PrimaryButton({
       {children}
     </button>
   );
-}
+};
+
+export { PrimaryButton };

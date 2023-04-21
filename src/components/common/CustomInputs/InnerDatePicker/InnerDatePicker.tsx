@@ -7,7 +7,8 @@ import {
 import DatePicker from "@amir04lm26/react-modern-calendar-date-picker";
 import "@amir04lm26/react-modern-calendar-date-picker/lib/DatePicker.css";
 
-import PrimaryButton from "@components/common/PrimaryButton/PrimaryButton";
+import { PrimaryButton } from "@components/common/PrimaryButton/PrimaryButton";
+import { FC } from "react";
 
 interface Data {
   year: number;
@@ -21,11 +22,7 @@ interface Props {
   placeHolder: string;
 }
 
-export default function InnerDatePicker({
-  field,
-  setValue,
-  placeHolder,
-}: Props) {
+const InnerDatePicker: FC<Props> = ({ field, setValue, placeHolder }) => {
   const handleDateChange = (data: Data): void => {
     const formattedDateObject = `${data.year}/${data.month}/${data.day}`;
     setValue(field.name, formattedDateObject);
@@ -66,4 +63,6 @@ export default function InnerDatePicker({
       )}
     />
   );
-}
+};
+
+export { InnerDatePicker };

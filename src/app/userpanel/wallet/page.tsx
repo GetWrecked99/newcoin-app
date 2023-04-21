@@ -1,3 +1,3 @@
-export default function Wallet() {
+export default function Wallet(): JSX.Element {
   return <div>Wallet</div>;
 }

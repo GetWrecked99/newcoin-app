@@ -1,14 +1,14 @@
-import React from "react";
+import React, { FC } from "react";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { FieldValues, useController, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import { Form } from "@components/common/Form/Form";
-import FormField from "@components/common/FormField/FormField";
-import InnerTextInput from "@components/common/CustomInputs/InnerTextInput/InnerTextInput";
-import PrimaryButton from "@components/common/PrimaryButton/PrimaryButton";
-import InnerPasswordInput from "@components/common/CustomInputs/InnerPasswordInput/InnerPasswordInput";
+import { FormField } from "@components/common/FormField/FormField";
+import { InnerTextInput } from "@components/common/CustomInputs/InnerTextInput/InnerTextInput";
+import { PrimaryButton } from "@components/common/PrimaryButton/PrimaryButton";
+import { InnerPasswordInput } from "@components/common/CustomInputs/InnerPasswordInput/InnerPasswordInput";
 
 import { loginUser } from "@core/services/api/authentication/login.api";
 import { setItem } from "@core/services/storage/localStorage";
@@ -21,7 +21,7 @@ import ArrowIcon from "@assets/icons/arrowleft.svg";
 import { toast } from "react-toastify";
 import { loggedIn } from "@core/redux/redux-store/auth/auth.slice";
 
-export default function LoginForm() {
+const LoginForm: FC = (): JSX.Element => {
   const router = useRouter();
   const dispatch = useDispatch();
 
@@ -100,4 +100,6 @@ export default function LoginForm() {
       </PrimaryButton>
     </Form>
   );
-}
+};
+
+export { LoginForm };

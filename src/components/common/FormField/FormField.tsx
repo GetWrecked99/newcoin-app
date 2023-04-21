@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { FC, ReactNode } from "react";
 import { ErrorMessage } from "@hookform/error-message";
 import { FieldErrors, FieldValues } from "react-hook-form";
 import { RegisterFormType } from "@core/types/form-types/register-form.types";
@@ -11,13 +11,13 @@ interface Props {
   fieldIcon: ReactNode;
 }
 
-export default function FormField({
+const FormField: FC<Props> = ({
   children,
   label,
   fieldName,
   fieldError,
   fieldIcon,
-}: Props) {
+}): JSX.Element => {
   return (
     <div className="w-full flex flex-col items-start">
       <div className="relative border-[1px] w-full h-[60px] border-[#D6D6D6] flex flex-row items-center rounded-full">
@@ -43,4 +43,6 @@ export default function FormField({
       </div>
     </div>
   );
-}
+};
+
+export { FormField };

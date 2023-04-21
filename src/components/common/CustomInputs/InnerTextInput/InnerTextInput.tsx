@@ -1,3 +1,4 @@
+import { FC } from "react";
 import { ControllerRenderProps, FieldValues } from "react-hook-form";
 
 interface Props {
@@ -6,11 +7,11 @@ interface Props {
   isInputDisabled?: boolean;
 }
 
-export default function InnerTextInput({
+const InnerTextInput: FC<Props> = ({
   field,
   placeHolder,
   isInputDisabled,
-}: Props): JSX.Element {
+}): JSX.Element => {
   return (
     <input
       dir="rtl"
@@ -22,4 +23,6 @@ export default function InnerTextInput({
       {...field}
     />
   );
-}
+};
+
+export { InnerTextInput };

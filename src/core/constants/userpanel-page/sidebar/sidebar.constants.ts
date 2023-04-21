@@ -4,7 +4,7 @@ import MarketReportsIcon from "@assets/icons/activity.svg";
 import WalletIcon from "@assets/icons/emptywallet.svg";
 import LogoutIcon from "@assets/icons/logout.svg";
 
-export const sidebarNavigation = [
+const sidebarNavigation = [
   {
     name: "داشبورد",
     href: "/userpanel/dashboard",
@@ -31,3 +31,5 @@ export const sidebarNavigation = [
     icon: LogoutIcon,
   },
 ];
+
+export { sidebarNavigation };

@@ -6,19 +6,18 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 
-import RegisterSidebar from "@components/Register/Sidebar/RegisterSidebar";
-import RegisterContent from "@components/Register/Content/RegisterContent";
+import { RegisterSidebar } from "@components/Register/Sidebar/RegisterSidebar";
+import { RegisterContent } from "@components/Register/Content/RegisterContent";
 import { Form } from "@components/common/Form/Form";
-import WizardForm from "@components/Register/WizardForm/WizardForm";
+import { WizardForm } from "@components/Register/WizardForm/WizardForm";
 import { toast } from "react-toastify";
 
 import { initialRegisterValues } from "@core/constants/forms/register-form/register-form.constants";
 import { registerFormValidation } from "@core/validations/validation";
-import { RegisterFormType } from "@core/types/form-types/register-form.types";
 import { registerUser } from "@core/services/api/authentication/register.api";
 import { AppState } from "@core/redux/store/store";
 
-export default function Register() {
+export default function Register(): JSX.Element | null {
   const [formStep, setFormStep] = useState(0);
   const { AuthData } = useSelector((state: AppState) => state.AuthData);
   const router = useRouter();

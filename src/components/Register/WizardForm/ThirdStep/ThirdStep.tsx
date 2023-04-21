@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 import {
   Control,
   FieldErrors,
@@ -7,12 +7,12 @@ import {
   useController,
 } from "react-hook-form";
 
-import InnerTextInput from "@components/common/CustomInputs/InnerTextInput/InnerTextInput";
-import FormField from "@components/common/FormField/FormField";
-import PrimaryButton from "@components/common/PrimaryButton/PrimaryButton";
-import InnerComboBox from "@components/common/CustomInputs/InnerComboBox/InnerComboBox";
-import Modal from "@components/common/Modal/Modal";
-import CustomMap from "./CustomMap/CustomMap";
+import { InnerTextInput } from "@components/common/CustomInputs/InnerTextInput/InnerTextInput";
+import { FormField } from "@components/common/FormField/FormField";
+import { PrimaryButton } from "@components/common/PrimaryButton/PrimaryButton";
+import { InnerComboBox } from "@components/common/CustomInputs/InnerComboBox/InnerComboBox";
+import { Modal } from "@components/common/Modal/Modal";
+import { CustomMap } from "./CustomMap/CustomMap";
 
 import { formattedProvinces } from "@core/utils/iran-city/iran-city.utils";
 import {
@@ -37,7 +37,7 @@ interface Props {
   citiesOfProvince: comboboxType[];
 }
 
-export default function ThirdStep({
+const ThirdStep: FC<Props> = ({
   control,
   prevFormStep,
   onSubmit,
@@ -48,7 +48,7 @@ export default function ThirdStep({
   selectedCity,
   onSelectCity,
   citiesOfProvince,
-}: Props) {
+}): JSX.Element => {
   const allProvinces = formattedProvinces();
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [mapPosition, setMapPosition] = useState({
@@ -207,4 +207,6 @@ export default function ThirdStep({
       </div>
     </div>
   );
-}
+};
+
+export { ThirdStep };

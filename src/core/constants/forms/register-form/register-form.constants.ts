@@ -1,6 +1,6 @@
 import { RegisterFormType } from "@core/types/form-types/register-form.types";
 
-export const initialRegisterValues: RegisterFormType = {
+const initialRegisterValues: RegisterFormType = {
   fullName: "",
   nationalId: "",
   birthDate: "",
@@ -16,13 +16,9 @@ export const initialRegisterValues: RegisterFormType = {
   securityCode: "",
 };
 
-export const firstStepFieldNames: string[] = [
-  "fullName",
-  "nationalId",
-  "birthDate",
-];
+const firstStepFieldNames: string[] = ["fullName", "nationalId", "birthDate"];
 
-export const secondStepFieldNames: string[] = [
+const secondStepFieldNames: string[] = [
   "phoneNumber",
   "email",
   "password",
@@ -30,10 +26,17 @@ export const secondStepFieldNames: string[] = [
   "securityCode",
 ];
 
-export const thirdStepFieldNames: string[] = [
+const thirdStepFieldNames: string[] = [
   "province",
   "city",
   "address",
   "latitude",
   "longitude",
 ];
+
+export {
+  initialRegisterValues,
+  firstStepFieldNames,
+  secondStepFieldNames,
+  thirdStepFieldNames,
+};

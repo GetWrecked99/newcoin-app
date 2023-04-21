@@ -1,3 +1,3 @@
-export default function Marketing() {
+export default function Marketing(): JSX.Element {
   return <div>Marketing</div>;
 }

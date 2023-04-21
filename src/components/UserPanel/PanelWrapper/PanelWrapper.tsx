@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Fragment, ReactNode, useEffect, useState } from "react";
+import React, { FC, Fragment, ReactNode, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { usePathname } from "next/navigation";
@@ -10,8 +10,8 @@ import { AiOutlineCloseCircle } from "react-icons/ai";
 
 import { Dialog, Transition } from "@headlessui/react";
 
-import PanelSidebar from "../Sidebar/PanelSidebar";
-import PanelContent from "../Content/PanelContent";
+import { PanelSidebar } from "../Sidebar/PanelSidebar";
+import { PanelContent } from "../Content/PanelContent";
 
 import { sidebarNavigation } from "@core/constants/userpanel-page/sidebar/sidebar.constants";
 import { AppState } from "@core/redux/store/store";
@@ -21,7 +21,7 @@ interface Props {
   children: ReactNode;
 }
 
-export default function PanelWrapper({ children }: Props) {
+const PanelWrapper: FC<Props> = ({ children }): JSX.Element | null => {
   const router = useRouter();
   const dispatch = useDispatch();
   const { AuthData } = useSelector((state: AppState) => state.AuthData);
@@ -134,4 +134,6 @@ export default function PanelWrapper({ children }: Props) {
       </div>
     </div>
   );
-}
+};
+
+export { PanelWrapper };

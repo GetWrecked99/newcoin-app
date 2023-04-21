@@ -1,5 +1,4 @@
 import Http from "../../interceptor/interceptor";
-import { LoginApiType } from "@core/types/api-types/login/login-api.types";
 import { FieldValues } from "react-hook-form";
 
 const MainUrl = process.env.NEXT_PUBLIC_ACCOUNTING;

@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, FC, SetStateAction } from "react";
 import {
   Control,
   FieldErrors,
@@ -6,15 +6,15 @@ import {
   useController,
 } from "react-hook-form";
 
-import InnerTextInput from "@components/common/CustomInputs/InnerTextInput/InnerTextInput";
-import FormField from "@components/common/FormField/FormField";
-import PrimaryButton from "@components/common/PrimaryButton/PrimaryButton";
-import OptField from "./OptField/OptField";
+import { InnerTextInput } from "@components/common/CustomInputs/InnerTextInput/InnerTextInput";
+import { FormField } from "@components/common/FormField/FormField";
+import { PrimaryButton } from "@components/common/PrimaryButton/PrimaryButton";
+import { OptField } from "./OptField/OptField";
 
 import { secondStepFieldNames } from "@core/constants/forms/register-form/register-form.constants";
 
 import LockIcon from "@assets/icons/lock.svg";
-import InnerPasswordInput from "@components/common/CustomInputs/InnerPasswordInput/InnerPasswordInput";
+import { InnerPasswordInput } from "@components/common/CustomInputs/InnerPasswordInput/InnerPasswordInput";
 import PhoneIcon from "@assets/icons/mobile.svg";
 import MailIcon from "@assets/icons/messagetext.svg";
 import ArrowIcon from "@assets/icons/arrowleft.svg";
@@ -33,7 +33,7 @@ interface Props {
   setOptValue: Dispatch<SetStateAction<string>>;
 }
 
-export default function SecondStep({
+const SecondStep: FC<Props> = ({
   control,
   errors,
   nextFormStep,
@@ -45,7 +45,7 @@ export default function SecondStep({
   isPhoneNumberValid,
   optValue,
   setOptValue,
-}: Props) {
+}): JSX.Element => {
   const { field: phoneNumberField } = useController({
     name: "phoneNumber",
     control: control,
@@ -174,4 +174,6 @@ export default function SecondStep({
       </div>
     </div>
   );
-}
+};
+
+export { SecondStep };

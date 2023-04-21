@@ -1,4 +1,4 @@
-import React, { useMemo, useRef, SetStateAction, Dispatch } from "react";
+import React, { useMemo, useRef, SetStateAction, Dispatch, FC } from "react";
 import { MapContainer, TileLayer, Marker } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
@@ -7,7 +7,7 @@ interface Props {
   setPosition: Dispatch<SetStateAction<{ lat: number; lng: number }>>;
 }
 
-export default function CustomMap({ position, setPosition }: Props) {
+const CustomMap: FC<Props> = ({ position, setPosition }): JSX.Element => {
   const markerRef = useRef(null);
   const eventHandlers = useMemo(
     () => ({
@@ -40,4 +40,6 @@ export default function CustomMap({ position, setPosition }: Props) {
       />
     </MapContainer>
   );
-}
+};
+
+export { CustomMap };

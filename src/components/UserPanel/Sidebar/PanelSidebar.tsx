@@ -4,13 +4,14 @@ import Link from "next/link";
 import { sidebarNavigation } from "@core/constants/userpanel-page/sidebar/sidebar.constants";
 
 import LogoIcon from "@assets/images/common/logo.png";
+import { FC } from "react";
 
 interface Props {
   pathName: string | null;
   onUserExit: () => void;
 }
 
-export default function PanelSidebar({ pathName, onUserExit }: Props) {
+const PanelSidebar: FC<Props> = ({ pathName, onUserExit }): JSX.Element => {
   return (
     <div className="hidden xl:flex xl:flex-col w-[250px] 2xl:w-[350px] xl:overflow-hidden bg-white rounded-2xl py-4 px-7">
       <div className="flex-1 flex flex-col min-h-0">
@@ -58,4 +59,6 @@ export default function PanelSidebar({ pathName, onUserExit }: Props) {
       </div>
     </div>
   );
-}
+};
+
+export { PanelSidebar };

@@ -3,7 +3,10 @@ let iranCity = require("iran-city");
 const provinces: { id: number; name: string; slug: string }[] =
   iranCity.allProvinces();
 
-export const formattedProvinces = () => {
+const formattedProvinces = (): {
+  id: number;
+  name: string;
+}[] => {
   let newProvinces: { id: number; name: string }[] = [];
   provinces.forEach((object) => {
     const newObject = { id: object.id, name: object.name };
@@ -12,10 +15,13 @@ export const formattedProvinces = () => {
   return newProvinces;
 };
 
-export const getCitiesOfProvinceById = (provinceId: {
+const getCitiesOfProvinceById = (provinceId: {
   id: number;
   name: string;
-}) => {
+}): {
+  id: number;
+  name: string;
+}[] => {
   const citiesOfTheProvince: {
     id: number;
     name: string;
@@ -31,3 +37,5 @@ export const getCitiesOfProvinceById = (provinceId: {
 
   return newCitiesObject;
 };
+
+export { formattedProvinces, getCitiesOfProvinceById };

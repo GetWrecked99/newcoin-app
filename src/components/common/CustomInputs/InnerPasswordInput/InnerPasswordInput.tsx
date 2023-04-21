@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { FC, useState } from "react";
 import { ControllerRenderProps, FieldValues } from "react-hook-form";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
@@ -7,7 +7,7 @@ interface Props {
   placeHolder: string;
 }
 
-export default function InnerPasswordInput({ field, placeHolder }: Props) {
+const InnerPasswordInput: FC<Props> = ({ field, placeHolder }): JSX.Element => {
   const [showHidePassword, setShowHidePassword] = useState(false);
   const handleChangeType = () => setShowHidePassword(!showHidePassword);
   return (
@@ -28,4 +28,6 @@ export default function InnerPasswordInput({ field, placeHolder }: Props) {
       />
     </>
   );
-}
+};
+
+export { InnerPasswordInput };

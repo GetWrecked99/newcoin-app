@@ -1,5 +1,5 @@
 import { Combobox, Transition } from "@headlessui/react";
-import React, { Fragment, useState } from "react";
+import React, { FC, Fragment, useState } from "react";
 import { CheckIcon } from "@heroicons/react/20/solid";
 import { BsChevronDown } from "react-icons/bs";
 import {
@@ -14,12 +14,12 @@ interface Props {
   placeHolder: string;
 }
 
-export default function InnerComboBox({
+const InnerComboBox: FC<Props> = ({
   selectedOption,
   setSelectedOption,
   optionsList,
   placeHolder,
-}: Props) {
+}): JSX.Element => {
   const [query, setQuery] = useState("");
 
   const filteredItem =
@@ -78,4 +78,6 @@ export default function InnerComboBox({
       </Combobox>
     </div>
   );
-}
+};
+
+export { InnerComboBox };

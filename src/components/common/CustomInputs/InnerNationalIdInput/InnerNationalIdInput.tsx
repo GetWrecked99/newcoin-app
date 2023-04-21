@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 import {
   ControllerRenderProps,
   FieldValues,
@@ -12,11 +12,12 @@ interface Props {
   setValue: UseFormSetValue<FieldValues>;
   placeHolder: string;
 }
-export default function InnerNationalIdInput({
+
+const InnerNationalIdInput: FC<Props> = ({
   field,
   setValue,
   placeHolder,
-}: Props) {
+}): JSX.Element => {
   const [idValue, setIdValue] = useState(field.value);
 
   const onChange = (value: React.ChangeEvent<HTMLInputElement>) => {
@@ -39,4 +40,6 @@ export default function InnerNationalIdInput({
       />
     </div>
   );
-}
+};
+
+export { InnerNationalIdInput };

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import {
   Control,
   FieldErrors,
@@ -7,9 +7,9 @@ import {
   UseFormTrigger,
 } from "react-hook-form";
 
-import FirstStep from "./FirstStep/FirstStep";
-import SecondStep from "./SecondStep/SecondStep";
-import ThirdStep from "./ThirdStep/ThirdStep";
+import { FirstStep } from "./FirstStep/FirstStep";
+import { SecondStep } from "./SecondStep/SecondStep";
+import { ThirdStep } from "./ThirdStep/ThirdStep";
 
 import { getSeedRandom } from "@core/utils/seed-random/seed-random.utils";
 import { getCitiesOfProvinceById } from "@core/utils/iran-city/iran-city.utils";
@@ -29,7 +29,7 @@ interface Props {
   prevFormStep: () => void;
 }
 
-export default function WizardForm({
+const WizardForm: FC<Props> = ({
   control,
   errors,
   trigger,
@@ -38,7 +38,7 @@ export default function WizardForm({
   formStep,
   nextFormStep,
   prevFormStep,
-}: Props) {
+}): JSX.Element => {
   /* starts states for second step. these states are here because we dont wanna set their value to their default values after we navigate into another step(couzof unmount). */
   const [optValue, setOptValue] = useState("");
   const [isPhoneNumberValid, setIsPhoneNumberValid] = useState(false);
@@ -138,4 +138,6 @@ export default function WizardForm({
       )}
     </>
   );
-}
+};
+
+export { WizardForm };

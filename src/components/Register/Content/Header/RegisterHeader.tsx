@@ -1,8 +1,10 @@
+import React, { FC } from "react";
+
 interface Props {
   currentFormStep: number;
 }
 
-export default function RegisterHeader({ currentFormStep }: Props) {
+const RegisterHeader: FC<Props> = ({ currentFormStep }): JSX.Element => {
   return (
     <div className="flex flex-col justify-center items-center">
       <span className="text-base font-bold text-primary">
@@ -13,4 +15,6 @@ export default function RegisterHeader({ currentFormStep }: Props) {
       </span>
     </div>
   );
-}
+};
+
+export { RegisterHeader };

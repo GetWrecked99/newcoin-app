@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { FC, Fragment } from "react";
 import Image from "next/image";
 
 import { stepperInformation } from "@core/constants/register-page/register.constants";
@@ -9,7 +9,7 @@ interface Props {
   currentFormStep: number;
 }
 
-export default function RegisterSidebar({ currentFormStep }: Props) {
+const RegisterSidebar: FC<Props> = ({ currentFormStep }): JSX.Element => {
   const renderStepperData = () =>
     stepperInformation.map((item) => (
       <Fragment key={item.step}>
@@ -50,4 +50,6 @@ export default function RegisterSidebar({ currentFormStep }: Props) {
       </ol>
     </div>
   );
-}
+};
+
+export { RegisterSidebar };

@@ -1,8 +1,8 @@
 import TickIcon from "@assets/icons/clipboardtick.svg";
 import OTPInput from "react-otp-input";
 import { ErrorMessage } from "@hookform/error-message";
-import PrimaryButton from "@components/common/PrimaryButton/PrimaryButton";
-import { Dispatch, SetStateAction } from "react";
+import { PrimaryButton } from "@components/common/PrimaryButton/PrimaryButton";
+import { Dispatch, FC, SetStateAction } from "react";
 import {
   ControllerRenderProps,
   FieldErrors,
@@ -18,14 +18,14 @@ interface Props {
   optHandler: (val: string) => void;
 }
 
-export default function OptField({
+const OptField: FC<Props> = ({
   phoneNumberValue,
   optValue,
   setOptValue,
   securityCodeField,
   optHandler,
   errors,
-}: Props) {
+}): JSX.Element => {
   return (
     <div className="flex flex-col justify-center">
       <div className="h-16 flex items-center px-7 bg-[#E8F4FF] rounded-full">
@@ -76,4 +76,6 @@ export default function OptField({
       </div>
     </div>
   );
-}
+};
+
+export { OptField };

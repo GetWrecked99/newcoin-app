@@ -1,11 +1,11 @@
-import { Dispatch, ReactNode, SetStateAction } from "react";
+import { Dispatch, FC, ReactNode, SetStateAction } from "react";
 
 interface Props {
   children: ReactNode;
   setSidebarOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-export default function PanelContent({ children, setSidebarOpen }: Props) {
+const PanelContent: FC<Props> = ({ children, setSidebarOpen }): JSX.Element => {
   return (
     <div className="flex flex-col flex-grow gap-y-[18px]">
       <div className="h-[80px] 2xl:h-[100px] rounded-2xl bg-white">
@@ -21,4 +21,6 @@ export default function PanelContent({ children, setSidebarOpen }: Props) {
       <div className="flex flex-col flex-grow overflow-y-auto">{children}</div>
     </div>
   );
-}
+};
+
+export { PanelContent };

@@ -1,6 +1,6 @@
 import seedRandome from "seedrandom";
 
-export const getSeedRandom = (seedValue: string, countOfNumber?: number) => {
+const getSeedRandom = (seedValue: string, countOfNumber?: number): number => {
   const random = seedRandome(seedValue);
   let result = random();
   if (countOfNumber) {
@@ -11,3 +11,5 @@ export const getSeedRandom = (seedValue: string, countOfNumber?: number) => {
   }
   return result;
 };
+
+export { getSeedRandom };

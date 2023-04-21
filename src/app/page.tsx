@@ -5,7 +5,7 @@ import Image from "next/image";
 
 import introImage from "@assets/images/login/intro.png";
 import logoImage from "@assets/images/common/logo.png";
-import LoginForm from "@components/Login/LoginForm/LoginForm";
+import { LoginForm } from "@components/Login/LoginForm/LoginForm";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
@@ -13,7 +13,7 @@ import { useEffect } from "react";
 import { toast } from "react-toastify";
 import { AppState } from "@core/redux/store/store";
 
-export default function Login() {
+export default function Login(): JSX.Element | null {
   const { AuthData } = useSelector((state: AppState) => state.AuthData);
   const router = useRouter();
 

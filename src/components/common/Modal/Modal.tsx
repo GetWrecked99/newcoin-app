@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React, { FC, ReactNode } from "react";
 
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
@@ -9,7 +9,11 @@ interface Props {
   closeModal: () => void;
 }
 
-export default function Modal({ children, isModalOpen, closeModal }: Props) {
+const Modal: FC<Props> = ({
+  children,
+  isModalOpen,
+  closeModal,
+}): JSX.Element => {
   return (
     <>
       <Transition appear show={isModalOpen} as={Fragment}>
@@ -45,4 +49,6 @@ export default function Modal({ children, isModalOpen, closeModal }: Props) {
       </Transition>
     </>
   );
-}
+};
+
+export { Modal };

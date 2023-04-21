@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-import Container from "@components/Container/Container";
+import { Container } from "@components/Container/Container";
 
 import "@assets/styles/globals.css";
 import Providers from "./provider/provider";
