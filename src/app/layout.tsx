@@ -9,6 +9,10 @@ interface RootLayoutProps {
   children: ReactNode;
 }
 
+export const metadata = {
+  title: "NewCoin-App",
+};
+
 export default function RootLayout({ children }: RootLayoutProps): JSX.Element {
   return (
     <html>
