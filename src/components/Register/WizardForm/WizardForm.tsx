@@ -47,10 +47,10 @@ export default function WizardForm({
   /* end of the 2nd step states. */
 
   /* start some handlers for second step. doing that for single responsibility (single source of truth) */
-  const sendSmsHandler = async (phoneNumber: string) => {
+  const sendSmsHandler = async (phoneNumberValue: string) => {
     const res = await trigger("phoneNumber");
     if (res) {
-      const randomCode = getSeedRandom(phoneNumber, 4).toString();
+      const randomCode = getSeedRandom(phoneNumberValue, 4).toString();
       setStoredCore(randomCode);
       setIsPhoneNumberValid(true);
       setIsInputDisabled(true);
@@ -58,11 +58,16 @@ export default function WizardForm({
     }
   };
 
-  const optHandler = async () => {
+  const optHandler = async (phoneNumberValue: string) => {
     if (storedCode == optValue) {
       setValue("securityCode", optValue, { shouldValidate: true });
       setIsPhoneNumberValid(false);
       setIsInputDisabled(true);
+      const formattedPhoneNumber = phoneNumberValue.replace(/^0/, "");
+      setValue("phoneNumber", formattedPhoneNumber, {
+        shouldValidate: false,
+        shouldTouch: false,
+      });
     }
     await trigger("securityCode");
   };

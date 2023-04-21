@@ -6,7 +6,7 @@ import Image from "next/image";
 import introImage from "@assets/images/login/intro.png";
 import logoImage from "@assets/images/common/logo.png";
 import LoginForm from "@components/Login/LoginForm/LoginForm";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { AppState } from "./GlobalRedux/store/store";
@@ -21,7 +21,7 @@ export default function Login() {
       router.push("/userpanel/dashboard");
       toast.info("هم اکنون در حساب کاربری خود هستید.");
     }
-  });
+  }, []);
 
   if (AuthData) {
     return null;

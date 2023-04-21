@@ -27,7 +27,7 @@ interface Props {
   isInputDisabled: boolean;
   storedCode: string;
   sendSmsHandler: (val: string) => void;
-  optHandler: () => void;
+  optHandler: (val: string) => void;
   isPhoneNumberValid: boolean;
   optValue: string;
   setOptValue: Dispatch<SetStateAction<string>>;

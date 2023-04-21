@@ -15,6 +15,8 @@ import { toast } from "react-toastify";
 
 import { initialRegisterValues } from "@core/constants/forms/register-form/register-form.constants";
 import { registerFormValidation } from "@core/validations/validation";
+import { RegisterFormType } from "@core/types/form-types/register-form.types";
+import { registerUser } from "@core/services/api/authentication/register.api";
 
 export default function Register() {
   const [formStep, setFormStep] = useState(0);
@@ -37,13 +39,37 @@ export default function Register() {
       router.push("/userpanel/dashboard");
       toast.info("هم اکنون در حساب کاربری خود هستید.");
     }
-  });
+  }, []);
 
   if (AuthData) {
     return null;
   }
 
-  const onSubmit = (data: FieldValues) => console.log(data);
+  const onSubmit = (data: FieldValues) => {
+    const requiredData = {
+      name: data.fullName,
+      email: data.email,
+      phone: data.phoneNumber,
+      password: data.password,
+      password_confirmation: data.confirmPassword,
+    };
+    try {
+      const loginApiHandler = async () => {
+        const userRegister = await registerUser(requiredData);
+        if (userRegister.success) {
+          router.push("/");
+          toast.success("ثبت نام شما با موفقیت انجام شد.");
+        } else {
+          userRegister.errors.map((err: string) => {
+            toast.error(err);
+          });
+        }
+      };
+      loginApiHandler();
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const nextFormStep = async (fieldNames: string[]) => {
     const res = await trigger(fieldNames);

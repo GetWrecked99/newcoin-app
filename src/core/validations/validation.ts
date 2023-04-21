@@ -20,7 +20,7 @@ const nationalIdValidation = Yup.string()
 const phoneNumberValidation = Yup.string()
   .required("پر کردن این فیلد الزامیست !")
   .matches(
-    /^09(0[1-5]|[1 3]\d|2[0-2]|98|90)\d{7}$/,
+    /^(09|9)(0[1-5]|[1 3]\d|2[0-2]|98|90)\d{7}$/,
     "لطفا یک شماره موبایل معتبر کشور ایران را وارد کنید !"
   );
 

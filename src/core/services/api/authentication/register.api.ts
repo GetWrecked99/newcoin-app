@@ -1,16 +1,16 @@
 import Http from "../../interceptor/interceptor";
-import { LoginApiType } from "@core/types/api-types/login/login-api.types";
+import { RegisterApiType } from "@core/types/api-types/register/register-api.types";
 import { FieldValues } from "react-hook-form";
 
 const MainUrl = process.env.NEXT_PUBLIC_ACCOUNTING;
 
-const loginUser = async (obj: FieldValues) => {
+const registerUser = async (obj: FieldValues) => {
   try {
-    const results = await Http.post(`${MainUrl}login`, obj);
+    const results = await Http.post(`${MainUrl}register`, obj);
     return results.data;
   } catch (error: any) {
     return error.response.data;
   }
 };
 
-export { loginUser };
+export { registerUser };

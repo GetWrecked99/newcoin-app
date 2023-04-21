@@ -46,19 +46,19 @@ export default function LoginForm() {
   const onSubmit = (data: FieldValues) => {
     try {
       const loginApiHandler = async () => {
-        // starts loading here and keep disablaing login button
-        const studentLogin = await loginUser(data);
-        if (studentLogin) {
-          // toast and loading here ...
-          dispatch(loggedIn(studentLogin.result));
-          setItem("token", studentLogin.token);
+        const userLogin = await loginUser(data);
+        if (userLogin.success) {
+          dispatch(loggedIn(userLogin.result));
+          setItem("token", userLogin.token);
           router.push("/userpanel/dashboard");
           toast.success("با موفقیت وارد شدید.");
+        } else {
+          toast.error(userLogin.message);
         }
       };
       loginApiHandler();
     } catch (error: any) {
-      toast.error(error.response.data.message || error.message);
+      console.error(error);
     }
   };
 

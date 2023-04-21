@@ -37,7 +37,7 @@ export default function PanelWrapper({ children }: Props) {
       router.push("/");
       toast.info("ابتدا وارد حساب کاربری خود شوید!");
     }
-  });
+  }, []);
 
   if (!AuthData) {
     return null;

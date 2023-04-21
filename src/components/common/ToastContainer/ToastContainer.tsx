@@ -14,7 +14,7 @@ export default function CustomToastContainer() {
       pauseOnFocusLoss
       draggable
       pauseOnHover={true}
-      toastClassName={"text-sm"}
+      toastClassName={"text-md"}
     />
   );
 }

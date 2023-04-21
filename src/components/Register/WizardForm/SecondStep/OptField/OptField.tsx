@@ -15,7 +15,7 @@ interface Props {
   setOptValue: Dispatch<SetStateAction<string>>;
   securityCodeField: ControllerRenderProps<FieldValues, "securityCode">;
   errors: FieldErrors<FieldValues>;
-  optHandler: () => void;
+  optHandler: (val: string) => void;
 }
 
 export default function OptField({
@@ -56,7 +56,10 @@ export default function OptField({
             )}
           />
         </div>
-        <PrimaryButton type="button" onClick={optHandler}>
+        <PrimaryButton
+          type="button"
+          onClick={() => optHandler(phoneNumberValue)}
+        >
           تایید شماره همراه
         </PrimaryButton>
       </div>
