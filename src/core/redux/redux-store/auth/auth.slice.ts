@@ -1,5 +1,3 @@
-"use client";
-
 import { createSlice } from "@reduxjs/toolkit";
 
 import { removeItem } from "@core/services/storage/localStorage";

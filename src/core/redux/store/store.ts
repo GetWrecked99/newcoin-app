@@ -1,5 +1,3 @@
-"use client";
-
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { storage } from "./../web-storage/web-storage";
 

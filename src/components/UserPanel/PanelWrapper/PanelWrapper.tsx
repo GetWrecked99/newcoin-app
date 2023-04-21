@@ -1,36 +1,32 @@
 "use client";
 
-import { AppState } from "@app/GlobalRedux/store/store";
+import React, { Fragment, ReactNode, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
-import { useSelector } from "react-redux";
 import Link from "next/link";
 import { AiOutlineCloseCircle } from "react-icons/ai";
-import { useDispatch } from "react-redux";
-import { toast } from "react-toastify";
 
-import React, { Fragment, ReactNode, useEffect, useState } from "react";
+import { Dialog, Transition } from "@headlessui/react";
+
 import PanelSidebar from "../Sidebar/PanelSidebar";
 import PanelContent from "../Content/PanelContent";
-import { usePathname } from "next/navigation";
-import { Dialog, Transition } from "@headlessui/react";
+
 import { sidebarNavigation } from "@core/constants/userpanel-page/sidebar/sidebar.constants";
-import { loggedOut } from "@app/GlobalRedux/redux-store/auth/auth.slice";
+import { AppState } from "@core/redux/store/store";
+import { loggedOut } from "@core/redux/redux-store/auth/auth.slice";
 
 interface Props {
   children: ReactNode;
 }
 
 export default function PanelWrapper({ children }: Props) {
+  const router = useRouter();
+  const dispatch = useDispatch();
   const { AuthData } = useSelector((state: AppState) => state.AuthData);
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const router = useRouter();
   const currentUrl = usePathname();
-  const dispatch = useDispatch();
-
-  const onUserExit = () => {
-    dispatch(loggedOut());
-    toast.success("از حساب خود خارج شدید.");
-  };
 
   useEffect(() => {
     if (!AuthData) {
@@ -38,6 +34,11 @@ export default function PanelWrapper({ children }: Props) {
       toast.info("ابتدا وارد حساب کاربری خود شوید!");
     }
   }, []);
+
+  const onUserExit = () => {
+    dispatch(loggedOut());
+    toast.success("از حساب خود خارج شدید.");
+  };
 
   if (!AuthData) {
     return null;

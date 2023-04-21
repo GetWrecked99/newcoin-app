@@ -4,7 +4,6 @@ import { useDispatch } from "react-redux";
 import { FieldValues, useController, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import { loggedIn } from "@app/GlobalRedux/redux-store/auth/auth.slice";
 import { Form } from "@components/common/Form/Form";
 import FormField from "@components/common/FormField/FormField";
 import InnerTextInput from "@components/common/CustomInputs/InnerTextInput/InnerTextInput";
@@ -20,6 +19,7 @@ import MailIcon from "@assets/icons/messagetext.svg";
 import LockIcon from "@assets/icons/lock.svg";
 import ArrowIcon from "@assets/icons/arrowleft.svg";
 import { toast } from "react-toastify";
+import { loggedIn } from "@core/redux/redux-store/auth/auth.slice";
 
 export default function LoginForm() {
   const router = useRouter();

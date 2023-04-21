@@ -6,7 +6,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 
-import { AppState } from "@app/GlobalRedux/store/store";
 import RegisterSidebar from "@components/Register/Sidebar/RegisterSidebar";
 import RegisterContent from "@components/Register/Content/RegisterContent";
 import { Form } from "@components/common/Form/Form";
@@ -17,6 +16,7 @@ import { initialRegisterValues } from "@core/constants/forms/register-form/regis
 import { registerFormValidation } from "@core/validations/validation";
 import { RegisterFormType } from "@core/types/form-types/register-form.types";
 import { registerUser } from "@core/services/api/authentication/register.api";
+import { AppState } from "@core/redux/store/store";
 
 export default function Register() {
   const [formStep, setFormStep] = useState(0);

@@ -9,8 +9,9 @@ import LoginForm from "@components/Login/LoginForm/LoginForm";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-import { AppState } from "./GlobalRedux/store/store";
+
 import { toast } from "react-toastify";
+import { AppState } from "@core/redux/store/store";
 
 export default function Login() {
   const { AuthData } = useSelector((state: AppState) => state.AuthData);

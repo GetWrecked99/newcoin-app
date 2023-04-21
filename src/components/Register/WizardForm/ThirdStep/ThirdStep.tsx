@@ -174,7 +174,7 @@ export default function ThirdStep({
                   <PrimaryButton
                     type="button"
                     onClick={onSubmitPosition}
-                    className="bg-[#EA8E38] flex items-center"
+                    className="!bg-[#EA8E38] flex items-center"
                   >
                     <span className="ml-4"> ثبت موقعیت</span>
                     <i>
