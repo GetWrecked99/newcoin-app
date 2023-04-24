@@ -11,7 +11,7 @@ import { InnerTextInput } from "@components/common/CustomInputs/InnerTextInput/I
 import { FormField } from "@components/common/FormField/FormField";
 import { PrimaryButton } from "@components/common/PrimaryButton/PrimaryButton";
 import { InnerComboBox } from "@components/common/CustomInputs/InnerComboBox/InnerComboBox";
-import { Modal } from "@components/common/Modal/Modal";
+import { CustomModal } from "@components/common/CustomModal/CustomModal";
 import { CustomMap } from "@components/Register/WizardForm/ThirdStep/CustomMap/CustomMap";
 
 import { formattedProvinces } from "@core/utils/iran-city/iran-city.utils";
@@ -154,10 +154,7 @@ const ThirdStep: FC<Props> = ({
             >
               انتخاب طول و عرض جغرافیایی از روی نقشه
             </button>
-            <Modal
-              isModalOpen={isModalOpen}
-              closeModal={() => setIsModalOpen(false)}
-            >
+            <CustomModal isModalOpen={isModalOpen}>
               <div className="relative h-[400px]">
                 <CustomMap
                   position={mapPosition}
@@ -183,7 +180,7 @@ const ThirdStep: FC<Props> = ({
                   </PrimaryButton>
                 </div>
               </div>
-            </Modal>
+            </CustomModal>
           </div>
         </div>
       </div>
