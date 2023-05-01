@@ -14,8 +14,11 @@ import { WizardForm } from "@components/Register/WizardForm/WizardForm";
 
 import { initialRegisterValues } from "@core/constants/forms/register-form/register-form.constants";
 import { registerFormValidation } from "@core/validations/validation";
-import { registerUser } from "@core/services/api/authentication/register.api";
 import { AppState } from "@core/redux/store/store";
+import { RoutesEnum } from "@core/enums/routes/routes.enums";
+import { scrollToTop } from "@core/utils/scroll-to-top/scroll-to-top.utils";
+import { ToastMessagesEnum } from "@core/enums/toast-messages/toast-messages.enums";
+import { registerApiHandler } from "@core/utils/register-api-handler/register-api-handler.utils";
 
 export default function Register(): JSX.Element | null {
   const [formStep, setFormStep] = useState(0);
@@ -35,9 +38,10 @@ export default function Register(): JSX.Element | null {
 
   useEffect(() => {
     if (AuthData) {
-      router.push("/userpanel/dashboard");
-      toast.info("هم اکنون در حساب کاربری خود هستید.");
+      router.push(RoutesEnum.DashboardPage);
+      toast.info(ToastMessagesEnum.AlreadyLoggedIn);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (AuthData) {
@@ -53,18 +57,7 @@ export default function Register(): JSX.Element | null {
       password_confirmation: data.confirmPassword,
     };
     try {
-      const loginApiHandler = async () => {
-        const userRegister = await registerUser(requiredData);
-        if (userRegister.success) {
-          router.push("/");
-          toast.success("ثبت نام شما با موفقیت انجام شد.");
-        } else {
-          userRegister.errors.map((err: string) => {
-            toast.error(err);
-          });
-        }
-      };
-      loginApiHandler();
+      registerApiHandler(requiredData, router);
     } catch (error) {
       console.error(error);
     }
@@ -74,13 +67,13 @@ export default function Register(): JSX.Element | null {
     const res = await trigger(fieldNames);
     if (res) {
       setFormStep((currentStep) => currentStep + 1);
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      scrollToTop();
     }
   };
 
   const prevFormStep = () => {
     setFormStep((currentStep) => currentStep - 1);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    scrollToTop();
   };
 
   return (

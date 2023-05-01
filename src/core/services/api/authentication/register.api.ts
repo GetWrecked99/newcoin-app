@@ -8,7 +8,7 @@ const registerUser = async (obj: FieldValues) => {
     const results = await Http.post(`${MainUrl}register`, obj);
     return results.data;
   } catch (error: any) {
-    return error.response.data;
+    return error;
   }
 };
 

@@ -3,7 +3,6 @@ import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { FieldValues, useController, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { toast } from "react-toastify";
 
 import { Form } from "@components/common/Form/Form";
 import { FormField } from "@components/common/FormField/FormField";
@@ -11,11 +10,9 @@ import { InnerTextInput } from "@components/common/CustomInputs/InnerTextInput/I
 import { PrimaryButton } from "@components/common/PrimaryButton/PrimaryButton";
 import { InnerPasswordInput } from "@components/common/CustomInputs/InnerPasswordInput/InnerPasswordInput";
 
-import { loginUser } from "@core/services/api/authentication/login.api";
-import { setItem } from "@core/services/storage/localStorage";
 import { initialLoginValues } from "@core/constants/forms/login-form/login-form.constants";
 import { loginFormValidation } from "@core/validations/validation";
-import { loggedIn } from "@core/redux/redux-store/auth/auth.slice";
+import { loginApiHandler } from "@core/utils/login-api-handler/login-api-handler.utils";
 
 import MailIcon from "@assets/icons/messagetext.svg";
 import LockIcon from "@assets/icons/lock.svg";
@@ -36,27 +33,17 @@ const LoginForm: FC = (): JSX.Element => {
 
   const { field: emailField } = useController({
     name: "email",
-    control: control,
+    control,
   });
 
   const { field: passwordField } = useController({
     name: "password",
-    control: control,
+    control,
   });
+
   const onSubmit = (data: FieldValues): void => {
     try {
-      const loginApiHandler = async () => {
-        const userLogin = await loginUser(data);
-        if (userLogin.success) {
-          dispatch(loggedIn(userLogin.result));
-          setItem("token", userLogin.token);
-          router.push("/userpanel/dashboard");
-          toast.success("با موفقیت وارد شدید.");
-        } else {
-          toast.error(userLogin.message);
-        }
-      };
-      loginApiHandler();
+      loginApiHandler(data, dispatch, router);
     } catch (error: any) {
       console.error(error);
     }

@@ -7,7 +7,6 @@ import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { AiOutlineCloseCircle } from "react-icons/ai";
-
 import { Dialog, Transition } from "@headlessui/react";
 
 import { PanelSidebar } from "@components/UserPanel/Sidebar/PanelSidebar";
@@ -16,6 +15,8 @@ import { PanelContent } from "@components/UserPanel/Content/PanelContent";
 import { sidebarNavigation } from "@core/constants/userpanel-page/sidebar/sidebar.constants";
 import { AppState } from "@core/redux/store/store";
 import { loggedOut } from "@core/redux/redux-store/auth/auth.slice";
+import { RoutesEnum } from "@core/enums/routes/routes.enums";
+import { ToastMessagesEnum } from "@core/enums/toast-messages/toast-messages.enums";
 
 interface Props {
   children: ReactNode;
@@ -30,14 +31,15 @@ const PanelWrapper: FC<Props> = ({ children }): JSX.Element | null => {
 
   useEffect(() => {
     if (!AuthData) {
-      router.push("/");
-      toast.info("ابتدا وارد حساب کاربری خود شوید!");
+      router.push(RoutesEnum.RootPage);
+      toast.info(ToastMessagesEnum.MustLoggedIn);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const onUserExit = () => {
     dispatch(loggedOut());
-    toast.success("از حساب خود خارج شدید.");
+    toast.success(ToastMessagesEnum.LoggedOut);
   };
 
   if (!AuthData) {

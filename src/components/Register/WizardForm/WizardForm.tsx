@@ -99,45 +99,52 @@ const WizardForm: FC<Props> = ({
   };
   /* end of it */
 
-  return (
-    <>
-      {formStep === 0 ? (
-        <FirstStep
-          control={control}
-          errors={errors}
-          nextFormStep={nextFormStep}
-          setValue={setValue}
-        />
-      ) : formStep === 1 ? (
-        <SecondStep
-          control={control}
-          errors={errors}
-          nextFormStep={nextFormStep}
-          prevFormStep={prevFormStep}
-          isInputDisabled={isInputDisabled}
-          isPhoneNumberValid={isPhoneNumberValid}
-          storedCode={storedCode}
-          optValue={optValue}
-          setOptValue={setOptValue}
-          sendSmsHandler={sendSmsHandler}
-          optHandler={optHandler}
-        />
-      ) : (
-        <ThirdStep
-          control={control}
-          errors={errors}
-          onSubmit={onSubmit}
-          prevFormStep={prevFormStep}
-          setValue={setValue}
-          selectedProvince={selectedProvince}
-          onSelectProvince={onSelectProvince}
-          selectedCity={selectedCity}
-          onSelectCity={onSelectCity}
-          citiesOfProvince={citiesOfProvince}
-        />
-      )}
-    </>
-  );
+  const renderStep = (step: number): JSX.Element => {
+    switch (step) {
+      case 0:
+        return (
+          <FirstStep
+            control={control}
+            errors={errors}
+            nextFormStep={nextFormStep}
+            setValue={setValue}
+          />
+        );
+      case 1:
+        return (
+          <SecondStep
+            control={control}
+            errors={errors}
+            nextFormStep={nextFormStep}
+            prevFormStep={prevFormStep}
+            isInputDisabled={isInputDisabled}
+            isPhoneNumberValid={isPhoneNumberValid}
+            storedCode={storedCode}
+            optValue={optValue}
+            setOptValue={setOptValue}
+            sendSmsHandler={sendSmsHandler}
+            optHandler={optHandler}
+          />
+        );
+      default:
+        return (
+          <ThirdStep
+            control={control}
+            errors={errors}
+            onSubmit={onSubmit}
+            prevFormStep={prevFormStep}
+            setValue={setValue}
+            selectedProvince={selectedProvince}
+            onSelectProvince={onSelectProvince}
+            selectedCity={selectedCity}
+            onSelectCity={onSelectCity}
+            citiesOfProvince={citiesOfProvince}
+          />
+        );
+    }
+  };
+
+  return renderStep(formStep);
 };
 
 export { WizardForm };

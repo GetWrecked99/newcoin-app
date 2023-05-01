@@ -9,6 +9,7 @@ import { CoinSection } from "@components/UserPanel/Dashboard/CoinSection/CoinSec
 import PopularCoinsData from "@core/data/fake-data/popular-coins.data.json";
 import TransactionData from "@core/data/fake-data/transaction.data.json";
 import { WalletDataType } from "@core/types/mock-types/mock.types";
+import { getMyWalletData } from "@core/services/api/wallet/get-my-wallet-data.api";
 
 /* 
  async function getPopularCoinsData() {
@@ -34,17 +35,6 @@ import { WalletDataType } from "@core/types/mock-types/mock.types";
   return resForToMarketCoins;
 } 
 */
-
-async function getMyWalletData() {
-  const reqToMockApi = await fetch(
-    "https://6442ddd376540ce225974cbb.mockapi.io/my-wallet",
-    {
-      cache: "no-store",
-    }
-  );
-  const resForMockApi = await reqToMockApi.json();
-  return resForMockApi;
-}
 
 export default function Dashboard(): JSX.Element {
   // const popularCoinsData = use(getPopularCoinsData());

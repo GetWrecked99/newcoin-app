@@ -10,6 +10,8 @@ import { toast } from "react-toastify";
 import { LoginForm } from "@components/Login/LoginForm/LoginForm";
 
 import { AppState } from "@core/redux/store/store";
+import { RoutesEnum } from "@core/enums/routes/routes.enums";
+import { ToastMessagesEnum } from "@core/enums/toast-messages/toast-messages.enums";
 
 import introImage from "@assets/images/login/intro.png";
 import logoImage from "@assets/images/common/logo.png";
@@ -20,9 +22,10 @@ export default function Login(): JSX.Element | null {
 
   useEffect(() => {
     if (AuthData) {
-      router.push("/userpanel/dashboard");
-      toast.info("هم اکنون در حساب کاربری خود هستید.");
+      router.push(RoutesEnum.DashboardPage);
+      toast.info(ToastMessagesEnum.AlreadyLoggedIn);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (AuthData) {
@@ -56,7 +59,7 @@ export default function Login(): JSX.Element | null {
         >
           هنوز ثبت نام نکرده‌اید؟
         </Link>
-        {/* Form and inputs for loggin-in are inside of LoginForm Component */}
+        {/* Form and inputs for logging-in are inside the LoginForm Component */}
         <div className="w-full sm:max-w-lg xl:max-w-[582px] flex flex-col flex-grow">
           <LoginForm />
         </div>
