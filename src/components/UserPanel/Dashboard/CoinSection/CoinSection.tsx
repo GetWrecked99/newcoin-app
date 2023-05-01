@@ -17,7 +17,7 @@ const CoinSection: FC<Props> = ({ data }): JSX.Element => {
     dots: false,
     infinite: true,
     speed: 600,
-    slidesToShow: 3,
+    slidesToShow: 4,
     slidesToScroll: 1,
     initialSlide: 0,
     autoplay: true,
@@ -29,14 +29,14 @@ const CoinSection: FC<Props> = ({ data }): JSX.Element => {
       {
         breakpoint: 1536,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 4,
           slidesToScroll: 1,
         },
       },
       {
-        breakpoint: 1280,
+        breakpoint: 1366,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 3,
           slidesToScroll: 1,
         },
       },
@@ -48,7 +48,7 @@ const CoinSection: FC<Props> = ({ data }): JSX.Element => {
         },
       },
       {
-        breakpoint: 640,
+        breakpoint: 768,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
@@ -58,7 +58,7 @@ const CoinSection: FC<Props> = ({ data }): JSX.Element => {
   };
   return (
     <Slider className="w-full" {...sliderSettings}>
-      {data.map((item, index) => (
+      {data.slice(-5).map((item, index) => (
         <div key={index} dir="rtl" className="px-3 py-6">
           <CoinCard data={item} />
         </div>

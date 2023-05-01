@@ -43,7 +43,7 @@ export default function Dashboard(): JSX.Element {
   return (
     <div className="w-full h-full flex flex-col gap-y-4">
       <div className="flex justify-center w-full">
-        <div className="max-w-md sm:max-w-xl md:max-w-3xl lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl">
+        <div className="w-full">
           <CoinSection data={PopularCoinsData} />
         </div>
       </div>

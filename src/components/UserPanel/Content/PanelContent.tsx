@@ -1,8 +1,11 @@
 import { Dispatch, FC, ReactNode, SetStateAction } from "react";
 import { useSelector } from "react-redux";
 import { AiOutlineMenu } from "react-icons/ai";
+import Image from "next/image";
 
 import { AppState } from "@core/redux/store/store";
+
+import userImage from "@assets/images/common/user.png";
 
 interface Props {
   children: ReactNode;
@@ -14,7 +17,7 @@ const PanelContent: FC<Props> = ({ children, setSidebarOpen }): JSX.Element => {
   return (
     <div className="flex flex-grow">
       <div className="flex flex-col h-full w-full gap-y-[18px]">
-        <div className="flex flex-row items-center justify-between py-10 2xl:py-10 px-4 rounded-2xl bg-white">
+        <div className="flex flex-row items-center justify-between py-4 2xl:py-6 px-4 2xl:px-6 rounded-2xl bg-white">
           <div className="w-6 h-6 bg-transparent hidden xl:block"></div>
           <button
             type="button"
@@ -27,8 +30,11 @@ const PanelContent: FC<Props> = ({ children, setSidebarOpen }): JSX.Element => {
           {AuthData && (
             <div
               dir="ltr"
-              className="flex gap-x-5 flex-start text-xs font-bold"
+              className="flex gap-x-5 flex-start items-center text-xs font-bold"
             >
+              <figure className="w-12 h-12 rounded-full">
+                <Image src={userImage} alt="user image" />
+              </figure>
               <span>
                 Your Username is <mark>{(AuthData as any).name}</mark>
               </span>
