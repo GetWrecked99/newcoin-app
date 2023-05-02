@@ -23,10 +23,10 @@ interface Props {
   errors: FieldErrors<FieldValues>;
   trigger: UseFormTrigger<FieldValues>;
   setValue: UseFormSetValue<FieldValues>;
-  onSubmit: (value: FieldValues) => void;
   formStep: number;
   nextFormStep: (fieldNames: string[]) => Promise<void>;
   prevFormStep: () => void;
+  isLoading: boolean;
 }
 
 const WizardForm: FC<Props> = ({
@@ -34,10 +34,10 @@ const WizardForm: FC<Props> = ({
   errors,
   trigger,
   setValue,
-  onSubmit,
   formStep,
   nextFormStep,
   prevFormStep,
+  isLoading,
 }): JSX.Element => {
   /* starts states for second step. these states are here because we dont wanna set their value to their default values after we navigate into another step(couzof unmount). */
   const [optValue, setOptValue] = useState("");
@@ -131,7 +131,6 @@ const WizardForm: FC<Props> = ({
           <ThirdStep
             control={control}
             errors={errors}
-            onSubmit={onSubmit}
             prevFormStep={prevFormStep}
             setValue={setValue}
             selectedProvince={selectedProvince}
@@ -139,6 +138,7 @@ const WizardForm: FC<Props> = ({
             selectedCity={selectedCity}
             onSelectCity={onSelectCity}
             citiesOfProvince={citiesOfProvince}
+            isLoading={isLoading}
           />
         );
     }

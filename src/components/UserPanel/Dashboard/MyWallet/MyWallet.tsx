@@ -13,15 +13,24 @@ interface Props {
 }
 
 const MyWallet: FC<Props> = ({ walletData }): JSX.Element => {
+  const chartColor = ["#f7931a", "#7eb6f7", "#2e2e2e"];
+  const coinsPercentage = getPercentageForPieChart(walletData);
+
   const renderLabels = () => {
     return walletData.map((coin, index) => (
       <div
         key={index}
         className="flex flex-row flex-grow gap-x-3 items-center justify-start"
       >
-        <span className="w-2 h-2 rounded-full bg-[#2E2E2E] mb-0.5"></span>
-        <span className="text-base font-bold text-black mt-1">
+        <span
+          className="w-2 h-2 rounded-full mb-0.5"
+          style={{ backgroundColor: chartColor[index] }}
+        ></span>
+        <span className="text-base 2xl:text-lg font-bold text-black mt-1">
           {coin.coinName}
+        </span>
+        <span className="text-xs 2xl:text-sm font-bold text-[#AEAEAE]">
+          {` ${coinsPercentage[index].toFixed(1)} درصد`}
         </span>
       </div>
     ));
@@ -30,7 +39,7 @@ const MyWallet: FC<Props> = ({ walletData }): JSX.Element => {
   return (
     <>
       <div className="w-[40%] h-full flex flex-col">
-        <h2 className="text-base font-bold text-black mb-6">
+        <h2 className="text-base 2xl:text-lg font-bold text-black mb-6">
           دارایی های کیف پول
         </h2>
         {renderLabels()}
@@ -38,7 +47,8 @@ const MyWallet: FC<Props> = ({ walletData }): JSX.Element => {
       <div className="w-[60%] h-full">
         <PieChart
           labels={getLabelsForPieChart(walletData)}
-          counts={getPercentageForPieChart(walletData)}
+          counts={coinsPercentage}
+          colors={chartColor}
         />
       </div>
     </>

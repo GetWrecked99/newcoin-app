@@ -21,10 +21,10 @@ const CoinCard: FC<Props> = ({ data }): JSX.Element => {
         <div className="flex flex-row gap-x-3">
           <Image src={data.image} alt="" width={46} height={46} />
           <div className="flex flex-col gap-y-1">
-            <span className="text-base font-bold text-black line-clamp-1">
+            <span className="text-base 2xl:text-lg font-bold text-black line-clamp-1">
               {data.name}
             </span>
-            <span className="text-xs font-bold text-[#AEAEAE]">
+            <span className="text-xs 2xl:text-sm font-bold text-[#AEAEAE]">
               {data.symbol}
             </span>
           </div>
@@ -33,19 +33,19 @@ const CoinCard: FC<Props> = ({ data }): JSX.Element => {
           <span
             dir="ltr"
             className={
-              "text-base font-bold line-clamp-1 " +
+              "text-base 2xl:text-lg font-bold line-clamp-1 " +
               (weeklyDelta > 0 ? "text-[#2AC479]" : "text-red-400")
             }
           >
             {weeklyDelta.toFixed(2)} %
           </span>
-          <span className="text-sm font-bold text-[#1E1E1E] line-clamp-1">
+          <span className="text-sm 2xl:text-base font-bold text-[#1E1E1E] line-clamp-1">
             {data.current_price} دلار
           </span>
         </div>
       </div>
       <div>
-        <AreaChart data={weekAverage} />
+        <AreaChart data={weekAverage} weeklyDelta={weeklyDelta} />
       </div>
     </div>
   );

@@ -23,7 +23,7 @@ const PanelSidebar: FC<Props> = ({ pathName, onUserExit }): JSX.Element => {
             height={54}
             className="mb-4"
           />
-          <h2 className="text-xl font-black text-[#1E1E1E] mb-4">
+          <h2 className="text-xl 2xl:text-2xl font-black text-[#1E1E1E] mb-4">
             نیوکوین اسپیس
           </h2>
           <div className="w-full h-[1px] bg-[#D6D6D6]"></div>
@@ -33,10 +33,10 @@ const PanelSidebar: FC<Props> = ({ pathName, onUserExit }): JSX.Element => {
             <Link
               key={index}
               href={item.href}
-              className={`group flex items-center px-[18px] py-[10px] text-xs 2xl:text-sm font-bold rounded-2xl ${
+              className={`group flex items-center px-[18px] py-[10px] text-base font-bold rounded-2xl ${
                 pathName === item.href
-                  ? " bg-primary text-white"
-                  : "text-base hover:bg-primary/10"
+                  ? "bg-primary text-white"
+                  : "hover:bg-primary/10"
               }`}
               onClick={() => {
                 if (item.href === "/") {

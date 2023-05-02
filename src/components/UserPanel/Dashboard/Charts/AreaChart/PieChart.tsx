@@ -7,9 +7,10 @@ import { BaseChart } from "./BaseChart";
 interface Props {
   labels: string[];
   counts: number[];
+  colors: string[];
 }
 
-const PieChart: FC<Props> = ({ labels, counts }): JSX.Element => {
+const PieChart: FC<Props> = ({ labels, counts, colors }): JSX.Element => {
   const [showChart, setShowChart] = useState(false);
 
   const options = {
@@ -17,7 +18,7 @@ const PieChart: FC<Props> = ({ labels, counts }): JSX.Element => {
       width: 380,
       type: "pie",
     },
-    colors: ["#f7931a", "#7eb6f7", "#2e2e2e"],
+    colors,
     labels: labels,
     yaxis: {
       labels: {

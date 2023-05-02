@@ -16,7 +16,9 @@ const PopularCards: FC<Props> = ({ data }): JSX.Element => {
         <figure className="flex flex-row gap-x-3">
           <Image src={data.image} alt="" width={24} height={24} />
         </figure>
-        <span className="text-sm font-bold text-black">{data.name}</span>
+        <span className="text-sm font-bold text-black line-clamp-1">
+          {data.name}
+        </span>
         <span className="text-xs font-bold text-[#B3B3B3]">{data.symbol}</span>
       </div>
       <span

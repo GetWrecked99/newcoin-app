@@ -12,16 +12,18 @@ import { setItem } from "@core/services/storage/localStorage";
 const loginApiHandler = async (
   data: FieldValues,
   dispatch: Dispatch<AnyAction>,
-  router: AppRouterInstance
+  router: AppRouterInstance,
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
   const userLogin = await loginUser(data);
-  console.log(userLogin);
   if (userLogin.success) {
+    setIsLoading(false);
     dispatch(loggedIn(userLogin.result));
     setItem("token", userLogin.token);
     router.push(RoutesEnum.DashboardPage);
     toast.success(ToastMessagesEnum.LoggedIn);
   } else {
+    setIsLoading(false);
     toast.error(userLogin.response.data.message);
   }
 };

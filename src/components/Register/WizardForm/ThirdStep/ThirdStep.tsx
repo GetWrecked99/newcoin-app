@@ -27,7 +27,6 @@ import AddressIcon from "@assets/icons/address.svg";
 interface Props {
   control: Control<FieldValues>;
   prevFormStep: () => void;
-  onSubmit: (value: FieldValues) => void;
   errors: FieldErrors<FieldValues>;
   setValue: UseFormSetValue<FieldValues>;
   selectedProvince: geoAddressType;
@@ -35,12 +34,12 @@ interface Props {
   selectedCity: geoAddressType;
   onSelectCity: (value: comboboxType) => void;
   citiesOfProvince: comboboxType[];
+  isLoading: boolean;
 }
 
 const ThirdStep: FC<Props> = ({
   control,
   prevFormStep,
-  onSubmit,
   errors,
   setValue,
   selectedProvince,
@@ -48,6 +47,7 @@ const ThirdStep: FC<Props> = ({
   selectedCity,
   onSelectCity,
   citiesOfProvince,
+  isLoading,
 }): JSX.Element => {
   const allProvinces = formattedProvinces();
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -86,6 +86,8 @@ const ThirdStep: FC<Props> = ({
     setValue(longitudeField.name, mapPosition.lng);
     setIsModalOpen(false);
   };
+
+  console.log(isLoading);
 
   return (
     <div className="flex flex-col h-full">
@@ -194,7 +196,11 @@ const ThirdStep: FC<Props> = ({
           >
             مرحله قبل
           </button>
-          <PrimaryButton className="flex items-center" onSubmit={onSubmit}>
+          <PrimaryButton
+            type={isLoading ? "button" : "submit"}
+            className="flex items-center"
+            disabled={isLoading}
+          >
             <span className="ml-4">ثبت نام</span>
             <i>
               <ArrowIcon />

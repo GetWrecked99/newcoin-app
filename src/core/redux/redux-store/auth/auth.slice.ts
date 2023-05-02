@@ -1,8 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 import { removeItem } from "@core/services/storage/localStorage";
+import { AuthDataType } from "@core/types/authdata-types/auth-data.types";
 
-const initialState = { AuthData: null };
+const initialState: {
+  AuthData: null | AuthDataType;
+} = { AuthData: null };
 
 const authSlice = createSlice({
   name: "AuthData",

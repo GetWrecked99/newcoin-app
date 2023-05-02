@@ -35,13 +35,7 @@ const PanelContent: FC<Props> = ({ children, setSidebarOpen }): JSX.Element => {
               <figure className="w-12 h-12 rounded-full">
                 <Image src={userImage} alt="user image" />
               </figure>
-              <span>
-                Your Username is <mark>{(AuthData as any).name}</mark>
-              </span>
-              &&
-              <span>
-                Your Email is <mark>{(AuthData as any).email}</mark>
-              </span>
+              <span className="text-base font-serif">{AuthData.name}</span>
             </div>
           )}
         </div>

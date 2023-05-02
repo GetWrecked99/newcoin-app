@@ -6,9 +6,10 @@ import { BaseChart } from "./BaseChart";
 
 interface Props {
   data: number[];
+  weeklyDelta: number;
 }
 
-const AreaChart: FC<Props> = ({ data }) => {
+const AreaChart: FC<Props> = ({ data, weeklyDelta }) => {
   const [showChart, setShowChart] = useState(false);
 
   const options = {
@@ -25,10 +26,10 @@ const AreaChart: FC<Props> = ({ data }) => {
     stroke: {
       curve: "smooth",
       lineCap: "butt",
-      colors: ["#2ac479"],
+      colors: weeklyDelta >= 0 ? ["#2ac479"] : ["#c42a44"],
       width: 3,
     },
-    colors: ["#99e2bf", "#f6fcf9"],
+    colors: weeklyDelta >= 0 ? ["#99e2bf", "#f6fcf9"] : ["#e299ab", "#fcf6f7"],
     xaxis: {
       labels: {
         show: false,
@@ -47,7 +48,7 @@ const AreaChart: FC<Props> = ({ data }) => {
     },
     markers: {
       size: 6,
-      strokeColors: "#2ac479",
+      strokeColors: weeklyDelta >= 0 ? "#2ac479" : ["#c42a44"],
       colors: "#fff",
       strokeWidth: 3,
     },

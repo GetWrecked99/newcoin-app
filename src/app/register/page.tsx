@@ -21,8 +21,9 @@ import { ToastMessagesEnum } from "@core/enums/toast-messages/toast-messages.enu
 import { registerApiHandler } from "@core/utils/register-api-handler/register-api-handler.utils";
 
 export default function Register(): JSX.Element | null {
-  const [formStep, setFormStep] = useState(0);
   const { AuthData } = useSelector((state: AppState) => state.AuthData);
+  const [formStep, setFormStep] = useState(0);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const router = useRouter();
   const {
     handleSubmit,
@@ -49,6 +50,7 @@ export default function Register(): JSX.Element | null {
   }
 
   const onSubmit = (data: FieldValues) => {
+    setIsLoading(true);
     const requiredData = {
       name: data.fullName,
       email: data.email,
@@ -57,7 +59,7 @@ export default function Register(): JSX.Element | null {
       password_confirmation: data.confirmPassword,
     };
     try {
-      registerApiHandler(requiredData, router);
+      registerApiHandler(requiredData, router, setIsLoading);
     } catch (error) {
       console.error(error);
     }
@@ -94,10 +96,10 @@ export default function Register(): JSX.Element | null {
                 errors={errors}
                 trigger={trigger}
                 setValue={setValue}
-                onSubmit={onSubmit}
                 formStep={formStep}
                 nextFormStep={nextFormStep}
                 prevFormStep={prevFormStep}
+                isLoading={isLoading}
               />
             </Form>
           </div>

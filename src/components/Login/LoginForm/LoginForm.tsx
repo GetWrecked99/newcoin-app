@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { FieldValues, useController, useForm } from "react-hook-form";
@@ -21,6 +21,7 @@ import ArrowIcon from "@assets/icons/arrowleft.svg";
 const LoginForm: FC = (): JSX.Element => {
   const router = useRouter();
   const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const {
     handleSubmit,
@@ -42,9 +43,11 @@ const LoginForm: FC = (): JSX.Element => {
   });
 
   const onSubmit = (data: FieldValues): void => {
+    setIsLoading(true);
     try {
-      loginApiHandler(data, dispatch, router);
+      loginApiHandler(data, dispatch, router, setIsLoading);
     } catch (error: any) {
+      setIsLoading(false);
       console.error(error);
     }
   };
@@ -79,7 +82,11 @@ const LoginForm: FC = (): JSX.Element => {
           />
         </FormField>
       </div>
-      <PrimaryButton type="submit" className="mt-12 flex items-center">
+      <PrimaryButton
+        type={isLoading ? "button" : "submit"}
+        className="mt-12 flex items-center"
+        disabled={isLoading}
+      >
         <span className="ml-4">ورود به حساب</span>
         <i>
           <ArrowIcon />
