@@ -29,13 +29,13 @@ const MyWallet: FC<Props> = ({ walletData }): JSX.Element => {
 
   return (
     <>
-      <div className="w-1/3 h-full flex flex-col">
+      <div className="w-[40%] h-full flex flex-col">
         <h2 className="text-base font-bold text-black mb-6">
           دارایی های کیف پول
         </h2>
         {renderLabels()}
       </div>
-      <div className="w-2/3 h-full">
+      <div className="w-[60%] h-full">
         <PieChart
           labels={getLabelsForPieChart(walletData)}
           counts={getPercentageForPieChart(walletData)}

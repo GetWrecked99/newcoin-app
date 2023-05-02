@@ -1,6 +1,7 @@
 "use client";
 
 import React, { FC, useEffect, useState } from "react";
+
 import { BaseChart } from "../AreaChart/BaseChart";
 
 interface Props {
@@ -9,11 +10,15 @@ interface Props {
 
 const BarChart: FC<Props> = ({ data }): JSX.Element => {
   const [showChart, setShowChart] = useState(false);
+
+  const min = Math.min(...data);
+  const max = Math.max(...data);
+
   const options = {
     series: [
       {
         name: "Inflation",
-        data: [2.3, 3.1, 4.0, 10.1, 4.0, 3.6, 3.2, 2.3, 1.4, 0.8, 0.5, 0.2],
+        data,
       },
     ],
     chart: {
@@ -29,6 +34,7 @@ const BarChart: FC<Props> = ({ data }): JSX.Element => {
         dataLabels: {
           position: "top",
         },
+        columnWidth: "50%",
       },
     },
     dataLabels: {
@@ -37,6 +43,9 @@ const BarChart: FC<Props> = ({ data }): JSX.Element => {
       style: {
         fontSize: "12px",
         colors: ["#304758"],
+      },
+      formatter: function (val: number) {
+        return Math.trunc(val);
       },
     },
     colors: ["#3a8bea"],
@@ -76,16 +85,25 @@ const BarChart: FC<Props> = ({ data }): JSX.Element => {
     },
     yaxis: {
       tickAmount: 4,
-      min: 0,
-      max: 100,
+      min: min - (max - min) / 10,
+      max: max,
+      labels: {
+        offsetX: -20,
+        formatter: (value: number) => {
+          return Math.trunc(value);
+        },
+      },
     },
   };
+
   const series = [
     {
       name: ["Binance exchanges"],
       data,
     },
   ];
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (typeof window !== "undefined" && !showChart) setShowChart(true);
   });

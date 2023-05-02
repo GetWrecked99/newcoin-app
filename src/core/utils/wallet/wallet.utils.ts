@@ -25,7 +25,7 @@ const getPercentageForPieChart = (walletData: WalletDataType[]) => {
 const getLabelsForPieChart = (walletData: WalletDataType[]) => {
   let labels: string[] = [];
   walletData.forEach((coin) => {
-    labels.push(coin.coinName);
+    labels.push(coin.symbol.toUpperCase());
   });
   return labels;
 };

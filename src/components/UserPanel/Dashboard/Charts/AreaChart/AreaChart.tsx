@@ -1,10 +1,16 @@
 "use client";
 
 import React, { FC, useEffect, useState } from "react";
+
 import { BaseChart } from "./BaseChart";
 
-const AreaChart: FC = () => {
+interface Props {
+  data: number[];
+}
+
+const AreaChart: FC<Props> = ({ data }) => {
   const [showChart, setShowChart] = useState(false);
+
   const options = {
     chart: {
       toolbar: {
@@ -49,12 +55,15 @@ const AreaChart: FC = () => {
   const series = [
     {
       name: "series2",
-      data: [12, 16, 33, 94, 1, 67, 20],
+      data: data,
     },
   ];
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (typeof window !== "undefined" && !showChart) setShowChart(true);
   });
+
   return showChart ? (
     <BaseChart
       type="area"

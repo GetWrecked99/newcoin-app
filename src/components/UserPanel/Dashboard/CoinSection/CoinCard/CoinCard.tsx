@@ -3,12 +3,18 @@ import Image from "next/image";
 
 import { AreaChart } from "@components/UserPanel/Dashboard/Charts/AreaChart/AreaChart";
 
+import { coinDataType } from "@core/types/crypto-types/crypto.types";
+import { priceHourToWeek } from "@core/utils/chart-data/transaction.utils";
+
 interface Props {
-  /* the reason that is has impilicity any type is that the crypto object hasn't a valid format for declaring the data object. (it's flexible) */
-  data: any;
+  data: coinDataType;
 }
 
 const CoinCard: FC<Props> = ({ data }): JSX.Element => {
+  const weekPrice = data.sparkline_in_7d.price;
+  const weeklyDelta = data.price_change_percentage_7d_in_currency;
+  const weekAverage = priceHourToWeek(weekPrice);
+
   return (
     <div className="flex flex-col h-full p-4 bg-white rounded-2xl">
       <div className="flex w-full items-center justify-between gap-y-3">
@@ -28,19 +34,19 @@ const CoinCard: FC<Props> = ({ data }): JSX.Element => {
             dir="ltr"
             className={
               "text-base font-bold line-clamp-1 " +
-              (data.price_change_percentage_24h > 0
-                ? "text-[#2AC479]"
-                : "text-red-400")
+              (weeklyDelta > 0 ? "text-[#2AC479]" : "text-red-400")
             }
           >
-            {data.price_change_percentage_24h} %
+            {weeklyDelta.toFixed(2)} %
           </span>
           <span className="text-sm font-bold text-[#1E1E1E] line-clamp-1">
             {data.current_price} دلار
           </span>
         </div>
       </div>
-      <div>{/* <AreaChart /> */}</div>
+      <div>
+        <AreaChart data={weekAverage} />
+      </div>
     </div>
   );
 };

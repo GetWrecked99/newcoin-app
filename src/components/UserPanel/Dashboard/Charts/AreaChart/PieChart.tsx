@@ -1,6 +1,7 @@
 "use client";
 
 import React, { FC, useEffect, useState } from "react";
+
 import { BaseChart } from "./BaseChart";
 
 interface Props {
@@ -40,17 +41,19 @@ const PieChart: FC<Props> = ({ labels, counts }): JSX.Element => {
       },
 
       style: {
-        fontSize: "14px",
+        fontSize: "12px",
         fontFamily: "Helvetica, Arial, sans-serif",
         fontWeight: "bold",
-        colors: ["#2e2e2e", "#f7931a", "#7eb6f7"],
+        colors: ["#fff"],
       },
     },
   };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (typeof window !== "undefined" && !showChart) setShowChart(true);
   });
+
   return showChart ? (
     <BaseChart
       type="pie"

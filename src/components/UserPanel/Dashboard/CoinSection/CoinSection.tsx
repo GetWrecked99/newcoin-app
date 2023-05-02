@@ -7,9 +7,10 @@ import "slick-carousel/slick/slick-theme.css";
 
 import { CoinCard } from "./CoinCard/CoinCard";
 
+import { coinDataType } from "@core/types/crypto-types/crypto.types";
+
 interface Props {
-  /* the reason that is has impilicity any type is that the crypto object hasn't a valid format for declaring the data object. (it's flexible) */
-  data: any[];
+  data: coinDataType[];
 }
 
 const CoinSection: FC<Props> = ({ data }): JSX.Element => {
@@ -58,7 +59,7 @@ const CoinSection: FC<Props> = ({ data }): JSX.Element => {
   };
   return (
     <Slider className="w-full" {...sliderSettings}>
-      {data.slice(-5).map((item, index) => (
+      {data.slice(0, 5).map((item, index) => (
         <div key={index} dir="rtl" className="px-3 py-6">
           <CoinCard data={item} />
         </div>

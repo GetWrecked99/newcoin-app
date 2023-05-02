@@ -1,26 +1,22 @@
 import { FC } from "react";
+
 import { BarChart } from "../Charts/BarChart/‌BarChart";
 
-import { getTransactionTotalValues } from "@core/utils/chart-data/transaction.utils";
+import { exchangeVolumeHourtoWeek } from "@core/utils/chart-data/transaction.utils";
+import { marketExchangeChartType } from "@core/types/crypto-types/crypto.types";
 
 interface Props {
-  transactionData: {
-    prices: number[][];
-    market_caps: number[][];
-    total_volumes: number[][];
-  };
+  transactionData: marketExchangeChartType[];
 }
 
 const Transaction: FC<Props> = ({ transactionData }): JSX.Element => {
   return (
     <div className="w-full flex flex-col items-start gap-y-2">
       <h3 className="block w-full text-base font-bold text-black">
-        ارزش معاملات هفته گذشته
+        ارزش معاملات هفته گذشته (btc)
       </h3>
       <div className="block w-full min-h-[200px]">
-        <BarChart
-          data={getTransactionTotalValues(transactionData.total_volumes)}
-        />
+        <BarChart data={exchangeVolumeHourtoWeek(transactionData)} />
       </div>
     </div>
   );
