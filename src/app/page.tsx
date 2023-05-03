@@ -33,9 +33,9 @@ export default function Login(): JSX.Element | null {
   }
 
   return (
-    <div className="h-full grid grid-cols-1 xl:grid-cols-2 rounded-2xl">
-      <div className="h-full flex flex-col justify-start items-center bg-primary rounded-s-2xl p-9">
-        <h1 className="mt-[85px] text-3xl md:text-4xl font-black text-white ">
+    <div className="h-full grid grid-cols-1 lg:grid-cols-2 rounded-2xl">
+      <div className="h-full flex flex-col justify-start items-center bg-primary rounded-t-2xl lg:rounded-tl-none lg:rounded-s-2xl p-9">
+        <h1 className="mt-[85px] text-3xl xl:text-4xl font-black text-white ">
           صرافی ارز دیجیتال نیوکوین اسپیس
         </h1>
         <p className="mt-[21px] text-xl font-medium text-center text-white">
@@ -43,10 +43,14 @@ export default function Login(): JSX.Element | null {
           دیجیتال ایران بپیوندید
         </p>
         <figure className="mt-[77px]">
-          <Image src={introImage} alt="NewCoin Intro" />
+          <Image
+            src={introImage}
+            alt="NewCoin Intro"
+            className=" w-44 h-80 xl:w-[246px] xl:h-[441px]"
+          />
         </figure>
       </div>
-      <div className="h-full flex flex-col justify-start items-center bg-white rounded-e-2xl p-9">
+      <div className="h-full flex flex-col justify-start items-center bg-white rounded-b-2xl lg:rounded-br-none lg:rounded-e-2xl p-9">
         <figure className="mt-[88px]">
           <Image src={logoImage} alt="NewCoin Logo" />
         </figure>

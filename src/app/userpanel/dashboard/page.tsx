@@ -24,7 +24,7 @@ export default async function Dashboard(): Promise<JSX.Element> {
       </div>
       <div className="grid grid-cols-4 gap-5">
         <div className="col-span-4 xl:col-span-3 grid grid-cols-2 gap-5">
-          <div className="col-span-2 md:col-span-1 p-4 bg-white rounded-2xl flex flex-row gap-x-4 items-center">
+          <div className="col-span-2 md:col-span-1 p-4 md:pl-0 2xl:pl-4 bg-white rounded-2xl flex flex-col">
             <MyWallet walletData={myWalletData} />
           </div>
           <div className="col-span-2 md:col-span-1 p-4 pl-0 bg-white rounded-2xl">

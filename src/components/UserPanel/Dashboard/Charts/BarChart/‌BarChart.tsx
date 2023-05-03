@@ -109,7 +109,13 @@ const BarChart: FC<Props> = ({ data }): JSX.Element => {
   });
 
   return showChart ? (
-    <BaseChart type="bar" options={options} series={series} width={"100%"} />
+    <BaseChart
+      type="bar"
+      options={options}
+      series={series}
+      width={"100%"}
+      height={"100%"}
+    />
   ) : (
     <span>Loading. . .</span>
   );

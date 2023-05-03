@@ -41,7 +41,7 @@ const BaseChart: FC<chartI> = ({
       series={series}
       type={type}
       width={width}
-      height={"100%"}
+      height={height}
     />
   );
 };

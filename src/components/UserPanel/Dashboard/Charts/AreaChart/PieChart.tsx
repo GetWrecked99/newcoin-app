@@ -60,8 +60,8 @@ const PieChart: FC<Props> = ({ labels, counts, colors }): JSX.Element => {
       type="pie"
       options={options}
       series={counts}
-      width={"100%"}
-      height={"100%"}
+      width={200}
+      height={200}
     />
   ) : (
     <span>Loading. . .</span>

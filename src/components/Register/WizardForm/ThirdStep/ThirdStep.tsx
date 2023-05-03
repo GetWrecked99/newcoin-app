@@ -87,8 +87,6 @@ const ThirdStep: FC<Props> = ({
     setIsModalOpen(false);
   };
 
-  console.log(isLoading);
-
   return (
     <div className="flex flex-col h-full">
       <div className="w-full max-w-[660px] flex-grow mx-auto">
@@ -162,7 +160,7 @@ const ThirdStep: FC<Props> = ({
                   position={mapPosition}
                   setPosition={setMapPosition}
                 />
-                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-row gap-x-4 z-[400]">
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col-reverse md:flex-row md:gap-x-4 gap-y-4 md:gap-y-0 z-[400] min-w-[165px] md:min-w-[263px]">
                   <PrimaryButton
                     type="button"
                     onClick={() => setIsModalOpen(false)}

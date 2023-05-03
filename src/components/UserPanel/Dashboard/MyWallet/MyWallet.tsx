@@ -20,13 +20,13 @@ const MyWallet: FC<Props> = ({ walletData }): JSX.Element => {
     return walletData.map((coin, index) => (
       <div
         key={index}
-        className="flex flex-row flex-grow gap-x-3 items-center justify-start"
+        className="flex flex-row flex-grow gap-x-3 md:gap-x-1.5 lg:gap-x-3 xl:gap-x-1.5 2xl:gap-x-3 items-center justify-start"
       >
         <span
           className="w-2 h-2 rounded-full mb-0.5"
           style={{ backgroundColor: chartColor[index] }}
         ></span>
-        <span className="text-base 2xl:text-lg font-bold text-black mt-1">
+        <span className="text-base md:text-sm lg:text-base xl:text-sm 2xl:text-lg font-bold text-black mt-1">
           {coin.coinName}
         </span>
         <span className="text-xs 2xl:text-sm font-bold text-[#AEAEAE]">
@@ -38,18 +38,18 @@ const MyWallet: FC<Props> = ({ walletData }): JSX.Element => {
 
   return (
     <>
-      <div className="w-[40%] h-full flex flex-col">
-        <h2 className="text-base 2xl:text-lg font-bold text-black mb-6">
-          دارایی های کیف پول
-        </h2>
-        {renderLabels()}
-      </div>
-      <div className="w-[60%] h-full">
-        <PieChart
-          labels={getLabelsForPieChart(walletData)}
-          counts={coinsPercentage}
-          colors={chartColor}
-        />
+      <h2 className="text-base 2xl:text-lg font-bold text-black mb-6">
+        دارایی های کیف پول
+      </h2>
+      <div className="flex flex-row justify-between items-center">
+        <div className="flex flex-col gap-y-3">{renderLabels()}</div>
+        <div>
+          <PieChart
+            labels={getLabelsForPieChart(walletData)}
+            counts={coinsPercentage}
+            colors={chartColor}
+          />
+        </div>
       </div>
     </>
   );
